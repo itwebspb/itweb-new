@@ -1,0 +1,4 @@
+<?php
+
+$MESS['ASPRO_SKU__OFFERS_PROPS_ACTION_ADD'] = 'Добавить';
+$MESS['ASPRO_SKU__OFFERS_PROPS_ACTION_DELETE'] = 'Удалить';

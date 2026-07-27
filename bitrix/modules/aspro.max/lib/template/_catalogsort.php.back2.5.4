@@ -1,0 +1,334 @@
+<?php
+
+namespace Aspro\Max\Template;
+
+use Bitrix\Main\Localization\Loc;
+
+class CatalogSort
+{
+    private const KEY = 'POPULARITY';
+    private const SORT = 'SHOWS';
+    private const ORDER = 'desc';
+
+    private const DEFAULT_SORT_BUTTONS = [
+        'SORT',
+        'POPULARITY',
+        'NAME',
+        'PRICE',
+        'QUANTITY',
+        'RANK',
+        'CUSTOM'
+    ];
+
+    protected array $availableSort = [];
+    protected array $sortButtons = [];
+    protected string $sortField = '';
+    protected string $orderField = '';
+    protected string $template = '';
+
+    protected ?bool $showRankSort = null;
+
+    protected string $sort;
+    protected string $order;
+
+    public function __construct(array $params = [], string $template = '', string $sortField = '', string $orderField = '')
+    {
+        $this->template = $template;
+        $this->sortField = $sortField;
+        $this->orderField = $orderField;
+
+        if ($params['IS_SEARCH']) {
+            $this->showRankSort = $params['SHOW_SORT_RANK_BUTTON'] !== 'N';
+        }
+
+        if ($params['SORT_BUTTONS']) {
+            $this->sortButtons = (array) $params['SORT_BUTTONS'];
+
+            if ($this->showRankSort) {
+                $this->sortButtons[] = 'RANK';
+            }
+        }
+
+        if ($params['AVAILABLE_SORT']) {
+            $this->availableSort = $params['AVAILABLE_SORT'];
+        } else {
+            $this->setAvailableSort($params);
+        }
+
+        if ($params['SORT']) {
+            $this->sort = $params['SORT'];
+        } else {
+            $this->setSort();
+        }
+
+        if ($params['ORDER']) {
+            $this->order = $params['ORDER'];
+        } else {
+            $this->setOrder();
+        }
+
+        $this->setCurrentSort();
+    }
+
+    private function __wakeup()
+    {
+    }
+
+    private function __clone()
+    {
+    }
+
+    protected function setAvailableSort(array $params)
+    {
+        $this->avaliableSort = [];
+
+        $this->availableSort['SORT'] = [
+            'KEY' => 'SORT',
+            'SORT' => 'SORT',
+            'ORDER_VALUES' => [
+                'desc' => Loc::getMessage('SECT_SORT_SORT').Loc::getMessage('SECT_ORDER_DESC'),
+                'asc' => Loc::getMessage('SECT_SORT_SORT').Loc::getMessage('SECT_ORDER_ASC'),
+            ],
+        ];
+
+        $this->availableSort[static::KEY] = [
+            'KEY' => static::KEY,
+            'SORT' => static::SORT,
+            'ORDER_VALUES' => [
+                'desc' => Loc::getMessage('SECT_SORT_'.static::KEY).Loc::getMessage('SECT_ORDER_DESC'),
+                'asc' => Loc::getMessage('SECT_SORT_'.static::KEY).Loc::getMessage('SECT_ORDER_ASC'),
+            ],
+        ];
+
+        $this->availableSort['NAME'] = [
+            'KEY' => 'NAME',
+            'SORT' => 'NAME',
+            'ORDER_VALUES' => [
+                'desc' => Loc::getMessage('SECT_SORT_NAME').Loc::getMessage('SECT_ORDER_DESC'),
+                'asc' => Loc::getMessage('SECT_SORT_NAME').Loc::getMessage('SECT_ORDER_ASC'),
+            ],
+        ];
+
+        $this->availableSort['QUANTITY'] = [
+            'KEY' => 'QUANTITY',
+            'SORT' => 'CATALOG_AVAILABLE',
+            'ORDER_VALUES' => [
+                'desc' => Loc::getMessage('SECT_SORT_QUANTITY'),
+            ],
+        ];
+
+        $this->addRankSort();
+        $this->addPriceSort($params);
+        $this->addPropertySort();
+        $this->addCustomSort();
+
+        $this->availableSort = array_filter(
+            $this->availableSort,
+            fn ($key) => in_array($key, $this->sortButtons),
+            ARRAY_FILTER_USE_KEY
+        );
+    }
+
+    protected function addRankSort()
+    {
+        if ($this->showRankSort) {
+            $application = \Bitrix\Main\Application::getInstance();
+            $session = $application->getSession();
+
+            $this->availableSort['RANK'] = [
+                'KEY' => 'RANK',
+                'SORT' => 'RANK',
+                'ORDER_VALUES' => [
+                    'desc' => Loc::getMessage('SECT_SORT_RANK'),
+                ],
+            ];
+
+            if (!$session->has('rank_sort')) {
+                $session->set('rank_sort', 'Y');
+            }
+        }
+    }
+
+    protected function addPriceSort(array $params)
+    {
+        if (in_array('PRICE', $this->sortButtons, true)) {
+            $this->availableSort['PRICE'] = [
+                'KEY' => 'PRICE',
+                'SORT' => 'PRICE',
+                'ORDER_VALUES' => [
+                    'desc' => Loc::getMessage('SECT_SORT_PRICE').Loc::getMessage('SECT_ORDER_DESC'),
+                    'asc' => Loc::getMessage('SECT_SORT_PRICE').Loc::getMessage('SECT_ORDER_ASC'),
+                ],
+            ];
+
+            $arSortPrices = $params['SORT_PRICES'];
+            if ($arSortPrices == 'MINIMUM_PRICE' || $arSortPrices == 'MAXIMUM_PRICE') {
+                $this->availableSort['PRICE']['SORT'] = 'PROPERTY_'.$arSortPrices;
+            } else {
+                if ($arSortPrices == 'REGION_PRICE') {
+                    global $arRegion;
+
+                    if ($arRegion) {
+                        if (!$arRegion['PROPERTY_SORT_REGION_PRICE_VALUE'] || $arRegion['PROPERTY_SORT_REGION_PRICE_VALUE'] === 'component') {
+                            $price = \CCatalogGroup::GetList([], ['NAME' => $params['SORT_REGION_PRICE']], false, false, ['ID', 'NAME'])->GetNext();
+                            $this->availableSort['PRICE']['SORT'] = 'CATALOG_PRICE_'.$price['ID'];
+                        } else {
+                            $this->availableSort['PRICE']['SORT'] = 'CATALOG_PRICE_'.$arRegion['PROPERTY_SORT_REGION_PRICE_VALUE'];
+                        }
+                    } else {
+                        $price_name = $params['SORT_REGION_PRICE'] ?: 'BASE';
+                        $price = \CCatalogGroup::GetList([], ['NAME' => $price_name], false, false, ['ID', 'NAME'])->GetNext();
+                        $this->availableSort['PRICE']['SORT'] = 'CATALOG_PRICE_'.$price['ID'];
+                    }
+                } else {
+                    $price = \CCatalogGroup::GetList([], ['NAME' => $params['SORT_PRICES']], false, false, ['ID', 'NAME'])->GetNext();
+                    $this->availableSort['PRICE']['SORT'] = 'CATALOG_PRICE_'.$price['ID'];
+                }
+            }
+        }
+    }
+
+    protected function addPropertySort()
+    {
+        foreach ($this->sortButtons as $sortProp) {
+            if (!in_array($sortProp, static::DEFAULT_SORT_BUTTONS, true)) {
+                $this->availableSort[mb_strtoupper($sortProp)] = [
+                    'KEY' => mb_strtoupper($sortProp),
+                    'SORT' => 'PROPERTY_'.mb_strtoupper($sortProp),
+                    'ORDER_VALUES' => [
+                        'desc' => Loc::getMessage('SECT_SORT_PROPERTY', ['#CODE#' => $sortProp]).Loc::getMessage('SECT_ORDER_DESC'),
+                        'asc' => Loc::getMessage('SECT_SORT_PROPERTY', ['#CODE#' => $sortProp]).Loc::getMessage('SECT_ORDER_ASC'),
+                    ],
+                ];
+            }
+        }
+    }
+
+    protected function addCustomSort()
+    {
+        if (in_array('CUSTOM', $this->sortButtons, true) && !isset($this->availableSort[$this->sortField])) {
+            $this->availableSort[$this->sortField] = [
+                'KEY' => $this->sortField,
+                'SORT' => $this->sortField,
+                'ORDER_VALUES' => [
+                    'desc' => Loc::getMessage('SECT_SORT_CUSTOM').Loc::getMessage('SECT_ORDER_DESC'),
+                    'asc' => Loc::getMessage('SECT_SORT_CUSTOM').Loc::getMessage('SECT_ORDER_ASC'),
+                ],
+            ];
+        }
+    }
+
+    protected function setSort()
+    {
+        $application = \Bitrix\Main\Application::getInstance();
+        $context = $application->getContext();
+        $request = $context->getRequest();
+        $session = $application->getSession();
+
+        $sessionName = 'sort'.($this->template ? '_'.$this->template : '');
+
+        $sort = static::SORT;
+        if ($request->get('sort') && $this->getSortKey(strtoupper($request->get('sort')))) {
+            $sort = htmlspecialcharsbx(strtoupper($request->get('sort')));
+
+            if ($this->showRankSort !== null) {
+                if ($sort === 'RANK' && $this->showRankSort) {
+                    $session->set('rank_sort', 'Y');
+                } else {
+                    $session->set('rank_sort', 'N');
+                    $session->set($sessionName, $sort);
+                }
+            } else {
+                $session->set($sessionName, $sort);
+            }
+        } elseif ($session->get('rank_sort') === 'Y' && $this->showRankSort) {
+            $sort = 'RANK';
+        } elseif ($session->has($sessionName) && $this->getSortKey(strtoupper($session->get($sessionName)))) {
+            $sort = strtoupper($session->get($sessionName));
+        } elseif ($this->sortField && $this->getSortKey(strtoupper($this->sortField))) {
+            $sort = strtoupper($this->sortField);
+            if (
+                strpos($sort, 'SCALED_PRICE_') === 0
+                || strpos($sort, 'CATALOG_PRICE_') === 0
+                || $sort === 'PROPERTY_MINIMUM_PRICE'
+                || $sort === 'PROPERTY_MAXIMUM_PRICE'
+            ) {
+                $sort = 'PRICE';
+            }
+        }
+
+        $this->sort = $sort;
+    }
+
+    protected function setOrder()
+    {
+        $application = \Bitrix\Main\Application::getInstance();
+        $context = $application->getContext();
+        $request = $context->getRequest();
+        $session = $application->getSession();
+
+        $sessionName = 'order'.($this->template ? '_'.$this->template : '');
+
+        $sort_order = static::ORDER;
+        if ($request->get('order') && in_array(mb_strtolower($request->get('order')), ['asc', 'desc'])) {
+            $sort_order = htmlspecialcharsbx(mb_strtolower($request->get('order')));
+            $session->set($sessionName, $sort_order);
+        } elseif ($session->has($sessionName) && in_array(mb_strtolower($session->get($sessionName)), ['asc', 'desc'])) {
+            $sort_order = $session->get($sessionName);
+        } elseif ($this->orderField) {
+            $sort_order = mb_strtolower($this->orderField);
+        }
+
+        $this->order = $sort_order;
+    }
+
+    protected function setCurrentSort()
+    {
+        $currentSortKey = $this->getCurrentSortKey();
+
+        if ($this->availableSort[$currentSortKey]) {
+            $this->availableSort[$currentSortKey]['CURRENT'] = $this->order;
+        } else {
+            $this->availableSort[array_key_first($this->availableSort)]['CURRENT'] = $this->order;
+        }
+    }
+
+    protected function getSortKey(string $key): string
+    {
+        return array_search($key, array_column($this->availableSort, 'SORT', 'KEY')) ?? '';
+    }
+
+    public function getCurrentSortKey(): string
+    {
+        static $currentSortKey;
+        if (!$currentSortKey) {
+            $currentSortKey = $this->getSortKey($this->sort);
+        }
+
+        return $currentSortKey;
+    }
+
+    public function getAvailableSort(): array
+    {
+        return $this->availableSort ?: [
+            static::SORT => [
+                'KEY' => static::KEY,
+                'SORT' => static::SORT,
+                'ORDER_VALUES' => [
+                    'desc' => Loc::getMessage('SECT_SORT_'.static::KEY).Loc::getMessage('SECT_ORDER_DESC'),
+                    'asc' => Loc::getMessage('SECT_SORT_'.static::KEY).Loc::getMessage('SECT_ORDER_ASC'),
+                ]
+            ]
+        ];
+    }
+
+    public function getSort(): string
+    {
+        return $this->sort ?: static::SORT;
+    }
+
+    public function getOrder(): string
+    {
+        return $this->order ?: static::ORDER;
+    }
+}

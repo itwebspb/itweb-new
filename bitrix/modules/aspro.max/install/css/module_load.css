@@ -1,0 +1,59 @@
+/*module_load*/
+.progress-download__bar-inner{
+  height: 8px;
+  background-color: #2196e0;
+}
+.progress-download__bar{
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: transparent;
+}
+.progress-download{
+  padding-top: 20px;
+}
+.progress-download__title{
+  margin-bottom: 16px;
+}
+
+.module-additional-info {
+    margin-bottom: 25px;
+}
+
+.module-info-wrapper-outer{
+  max-width: 762px;
+  margin: 0 auto;
+  line-height: 18px;
+}
+.module-additional-info__title{
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+}
+.module-additional-info__list {
+  padding-left: 20px;
+  margin: 11px 0;
+}
+.module-additional-info__list li{
+  margin-bottom: 4px;
+}
+.module-main-title {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+.download-smartseo-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.module-install-text {
+  margin-right: 10px;
+}
+
+.module-load-hr {
+  height: 1px;
+  background: #ededed;
+  margin: 40px 0;
+}

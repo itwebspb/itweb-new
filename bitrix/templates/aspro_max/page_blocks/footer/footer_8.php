@@ -1,0 +1,114 @@
+<?php
+
+if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) {
+    exit;
+}
+
+global $arTheme;
+?>
+
+<div class="footer-v7">
+    <div class="footer-inner short light">
+        <div class="maxwidth-theme">
+            <div class="row">
+                <div class="subscribe_wrap col-md-3">
+                    <div class="info">
+                        <?if (\Bitrix\Main\Loader::includeModule('subscribe') && $arTheme['HIDE_SUBSCRIBE']['VALUE'] != 'Y'):?>
+                            <div class="subscribe_button">
+                                <span class="btn" data-event="jqm" data-param-id="subscribe" data-param-type="subscribe" data-name="subscribe"><?=GetMessage('SUBSCRIBE_TITLE');?>
+
+                                <?=TSolution::showIconSvg('subscribe', SITE_TEMPLATE_PATH.'/images/svg/subscribe_small_footer.svg');?></span>
+                            </div>
+                        <?endif;?>
+
+                        <div class="copy-block">
+                            <div class="copy font_xs">
+                                <?$APPLICATION->IncludeFile(SITE_DIR.'include/footer/copy/copyright.php', [], [
+                                    'MODE' => 'php',
+                                    'NAME' => 'Copyright',
+                                    'TEMPLATE' => 'include_area.php',
+                                ]);?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-block col-md-6">
+                    <div class="row">
+                        <div class="contact_wrap col-md-6">
+                            <div class="info">
+                                <div class="phone blocks">
+                                    <div class="inline-block">
+                                        <?TSolution::ShowHeaderPhones('white sm', true);?>
+                                    </div>
+                                    <?$callbackExploded = explode(',', $arTheme['SHOW_CALLBACK']['VALUE']);?>
+                                    <?if (in_array('FOOTER', $callbackExploded)):?>
+                                        <div class="inline-block callback_wrap">
+                                            <span class="callback-block animate-load colored" data-event="jqm" data-param-form_id="CALLBACK" data-name="callback"><?=GetMessage('CALLBACK');?></span>
+                                        </div>
+                                    <?endif;?>
+                                </div>
+
+                                <?=TSolution::showEmail('email blocks');?>
+
+                                <?=TSolution::showAddress('address blocks');?>
+                            </div>
+                        </div>
+
+                        <div class="social-block col-md-6">
+                            <?$APPLICATION->IncludeComponent('bitrix:main.include', '.default',
+                                [
+                                    'COMPONENT_TEMPLATE' => '.default',
+                                    'PATH' => SITE_DIR.'include/footer/social.info.php',
+                                    'AREA_FILE_SHOW' => 'file',
+                                    'AREA_FILE_SUFFIX' => '',
+                                    'AREA_FILE_RECURSIVE' => 'Y',
+                                    'EDIT_TEMPLATE' => 'include_area.php',
+                                ],
+                                false, ['HIDE_ICONS' => 'Y']
+                            );?>
+
+                            <div class="pays">
+                                <?$APPLICATION->IncludeFile(SITE_DIR.'include/footer/copy/pay_system_icons.php', [], [
+                                    'MODE' => 'php',
+                                    'NAME' => 'onfidentiality',
+                                    'TEMPLATE' => 'include_area.php',
+                                ]);?>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 right_block_wrap">
+                    <div class="right_block">
+                        <div class="link_block">
+                            <?TSolution\Template\Common\IncludeAreas::showFooterPolicy();?>
+                            <?=TSolution::ShowPrintLink();?>
+                        </div>
+
+                        <div class="copy-block media">
+                            <div class="copy font_xs">
+                                <?$APPLICATION->IncludeFile(SITE_DIR.'include/footer/copy.php', [], [
+                                    'MODE' => 'php',
+                                    'NAME' => 'Copyright',
+                                    'TEMPLATE' => 'include_area.php',
+                                ]);?>
+                            </div>
+                        </div>
+
+                        <div class="bx-composite-banner-wrap">
+                            <div id="bx-composite-banner"></div>
+                        </div>
+
+                        <div class="developer-block-container">
+                            <?TSolution\Functions::showDeveloperBlock('light');?>
+                        </div>
+
+                        <?TSolution\Template\Common\IncludeAreas::showFooterUserBlock('mt mt--32');?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<i title="Cash" class="cacsh"></i>
+<i title="MasterCard" class="mastercard"></i>
+<i title="Visa" class="visa"></i>
+<i title="Mir" class="mir"></i>
+<i title="WebMoney" class="webmoney"></i>
+<i title="Qiwi" class="qiwi"></i>
+<i title="Sberbank" class="sbrf"></i>
+<i title="Alfa" class="alfa"></i>
+<i title="Yookassa" class="yookassa"></i>
+<i title="T-Bank" class="t-bank"></i>

@@ -1,0 +1,37 @@
+<?
+$MESS["ESOL_RR_REDIRECT_LIST_TITLE"] = "Список редиректов";
+$MESS["ESOL_RR_REDIRECTS_LIST"] = "Список редиректов";
+$MESS["ESOL_RR_PL_OLD_URL"] = "Старый URL";
+$MESS["ESOL_RR_PL_NEW_URL"] = "Новый URL";
+$MESS["ESOL_RR_PL_ACTIVE"] = "Активность";
+$MESS["ESOL_RR_PL_STATUS"] = "Статус";
+$MESS["ESOL_RR_PL_AUTO"] = "Создан автоматически";
+$MESS["ESOL_RR_PL_WSUBSECTIONS"] = "Применять для вложенных страниц";
+$MESS["ESOL_RR_PL_WGETPARAMS"] = "Применять для страниц с get-параметрами";
+$MESS["ESOL_RR_PL_SITE_NAME"] = "Сайт";
+$MESS["ESOL_RR_PL_COMMENT"] = "Комментарий";
+$MESS["ESOL_RR_PL_DATE_CREATE"] = "Дата создания";
+$MESS["ESOL_RR_PL_CREATED_BY_USER"] = "Кем создан";
+$MESS["ESOL_RR_PL_DATE_LAST_USE"] = "Дата последнего перехода";
+$MESS["ESOL_RR_PL_COUNT_USE"] = "Количество переходов";
+$MESS["ESOL_RR_TO_REDIRECT"] = "Редактировать запись";
+$MESS["ESOL_RR_REDIRECT_DELETE"] = "Удалить";
+$MESS["ESOL_RR_REDIRECT_DELETE_CONFIRM"] = "Вы уверены, что хотите удалить редирект?";
+$MESS["ESOL_RR_FILTER_OLD_URL"] = "Старый URL";
+$MESS["ESOL_RR_FILTER_NEW_URL"] = "Новый URL";
+$MESS["ESOL_RR_FILTER_STATUS"] = "Статус";
+$MESS["ESOL_RR_FILTER_AUTO"] = "Создан автоматически";
+$MESS["ESOL_RR_FILTER_WSUBSECTIONS"] = "Применять для вложенных страниц";
+$MESS["ESOL_RR_FILTER_WGETPARAMS"] = "Применять для страниц с get-параметрами";
+$MESS["ESOL_RR_FILTER_DATE_CREATE"] = "Дата создания";
+$MESS["ESOL_RR_FILTER_DATE_LAST_USE"] = "Дата последнего перехода";
+$MESS["ESOL_RR_FILTER_COUNT_USE"] = "Количество переходов";
+$MESS["ESOL_RR_FILTER_ACTIVE"] = "Активность";
+$MESS["ESOL_RR_ALL"] = "Все";
+$MESS["ESOL_RR_ERROR_DELETING_TYPE"] = "Ошибка при удалении записи";
+$MESS["ESOL_RR_ERROR_UPDATING_REC"] = "Ошибка при изменении записи";
+$MESS["ESOL_RR_NEW_REDIRECT"] = "Создать новый редирект";
+$MESS["ESOL_RR_TO_IMPORT"] = "Загрузить из файла";
+$MESS["ESOL_RR_YES"] = "Да";
+$MESS["ESOL_RR_NO"] = "Нет";
+?>

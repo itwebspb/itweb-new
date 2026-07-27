@@ -1,0 +1,6 @@
+<b>Fixes:</b>
+<ul>
+    <li>Fixed the operation of interactive elements (buttons, sliders, dropping lists, etc.) in the administrative part when installing the 1C-Bitrix platform version 25.100.300 (POPUP-12)</li>
+</ul>
+<br />
+<b>Attention!!! We strongly recommend that you install the update.Before installing the update, be sure to complete the full backup of the site. If you have made changes to the solution template, then additionally copy the entire template folder!</b>

@@ -1,0 +1,35 @@
+<?
+$MESS["ESOL_RR_ID"] = "ID";
+$MESS["ESOL_RR_REDIRECT_PAGE_TITLE_NEW"] = "New redirect";
+$MESS["ESOL_RR_REDIRECT_PAGE_TITLE_EDIT"] = "Edit redirect";
+$MESS["ESOL_RR_REDIRECT_TAB"] = "Redirect";
+$MESS["ESOL_RR_OLD_URL"] = "Old URL";
+$MESS["ESOL_RR_NEW_URL"] = "New URL";
+$MESS["ESOL_RR_URL_HINT"] = "URL is set from the root of the site, starting with the character <b>/</b>. No domain required. Example of a correctly spelled address: <b>/catalog/bikes/</b>";
+$MESS["ESOL_RR_STATUS"] = "Status";
+$MESS["ESOL_RR_WSUBSECTIONS"] = "Apply to nested pages";
+$MESS["ESOL_RR_WSUBSECTIONS_HINT"] = "When this option is enabled, the rule will be applied to all child sections and pages. For example, if you configure a redirect from <b>/catalog/bikes/</b> to <b>/catalog/bicycles/</b>, then redirects from <b>/catalog/bikes/bmx/</b> to <b>/catalog/bicycles/bmx/</b>, from <b>/catalog/bikes/bike1/</b> to <b>/catalog/bicycles/bike1/</b> etc. will automatically work.";
+$MESS["ESOL_RR_WGETPARAMS"] = "Apply to pages with get parameters";
+$MESS["ESOL_RR_WGETPARAMS_HINT"] = "When this option is enabled, the rule will be applied to the specified page with any get parameters. For example, if a redirect is configured with <b>/catalog/bikes/</b> to <b>/catalog/bicycles/</b>, then redirect from <b>/catalog/bikes/?a=1&b=2</b> to <b>/catalog/bicycles/?a=1&b=2</b> will automatically work.";
+$MESS["ESOL_RR_SITE"] = "Site";
+$MESS["ESOL_RR_COMMENT"] = "Comment";
+$MESS["ESOL_RR_BTN_SAVE"] = "Save";
+$MESS["ESOL_RR_BTN_APPLY"] = "Apply";
+$MESS["ESOL_RR_BTN_CANCEL"] = "Cancel";
+$MESS["ESOL_RR_TO_REDIRECT_LIST"] = "To redirect list";
+$MESS["ESOL_RR_NOT_SET_OLD_URL"] = 'Not set field "Old URL"';
+$MESS["ESOL_RR_NOT_SET_NEW_URL"] = 'Not set field "New URL"';
+$MESS["ESOL_RR_NOT_SET_SITE_ID"] = 'Not set field "Site"';
+$MESS["ESOL_RR_YES"] = "Yes";
+$MESS["ESOL_RR_NO"] = "No";
+$MESS["ESOL_RR_URL_EXAMPLE"] = "URL is specified without a domain. For example: %s";
+$MESS["ESOL_RR_REGEXP"] = "Enable regular expression search";
+$MESS["ESOL_RR_REGEXP_HINT"] = "With this option, the old URL can be set as a regular expression";
+$MESS["ESOL_RR_ACTIVE"] = "Active";
+$MESS["ESOL_RR_FOR404"] = "Use only on 404 pages";
+$MESS["ESOL_RR_FOR404_HINT"] = "When this option is enabled, the redirect will be applied only on pages with the status 404";
+$MESS["ESOL_RR_TEXT_301"] = "moved permanently";
+$MESS["ESOL_RR_TEXT_302"] = "moved temporarily";
+$MESS["ESOL_RR_TEXT_410"] = "gone";
+$MESS["ESOL_RR_ERROR_DOUBLE"] = "A redirect with this &laquo;Old URL&raquo; already exists";
+?>

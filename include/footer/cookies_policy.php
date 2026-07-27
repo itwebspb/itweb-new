@@ -1,0 +1,1 @@
+<a href="<?=SITE_DIR?>include/cookies_detail.php">Политика использования файлов cookies</a>

@@ -1,0 +1,12 @@
+BX.Aspro.Utils.readyDOM(() => {
+  setTimeout(() => {
+    InitIconsGummi();
+
+    setTimeout(() => {
+      InitIconsGummi();
+      window.isIconsGummiInitied = true;
+
+      $(".social-icons__list--top").closest(".hide-dotted").addClass("dotted-complete");
+    }, 0);
+  }, 0);
+});

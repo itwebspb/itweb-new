@@ -1,0 +1,35 @@
+<?
+$MESS["ESOL_RR_ID"] = "ID";
+$MESS["ESOL_RR_REDIRECT_PAGE_TITLE_NEW"] = "Новый редирект";
+$MESS["ESOL_RR_REDIRECT_PAGE_TITLE_EDIT"] = "Изменение редиректа";
+$MESS["ESOL_RR_REDIRECT_TAB"] = "Редирект";
+$MESS["ESOL_RR_OLD_URL"] = "Старый URL";
+$MESS["ESOL_RR_NEW_URL"] = "Новый URL";
+$MESS["ESOL_RR_URL_HINT"] = "URL задается от корня сайта, начиная с символа <b>/</b>. Домен указывать не нужно. Пример правильно написанного адреса: <b>/catalog/bikes/</b>";
+$MESS["ESOL_RR_STATUS"] = "Статус";
+$MESS["ESOL_RR_WSUBSECTIONS"] = "Применять для вложенных страниц";
+$MESS["ESOL_RR_WSUBSECTIONS_HINT"] = "При включении данной опции правило будет применяться ко всем дочерним разделам и страницам. Например, если настроен редирект с <b>/catalog/bikes/</b> на <b>/catalog/bicycles/</b>, то автоматически сработают редиректы с <b>/catalog/bikes/bmx/</b> на <b>/catalog/bicycles/bmx/</b>,  с <b>/catalog/bikes/bike1/</b> на <b>/catalog/bicycles/bike1/</b> и т.д.";
+$MESS["ESOL_RR_WGETPARAMS"] = "Применять для страниц с get-параметрами";
+$MESS["ESOL_RR_WGETPARAMS_HINT"] = "При включении данной опции правило будет применяться к указанной странице с любыми get-параметрами. Например, если настроен редирект с <b>/catalog/bikes/</b> на <b>/catalog/bicycles/</b>, то автоматически сработает редирект с <b>/catalog/bikes/?a=1&b=2</b> на <b>/catalog/bicycles/?a=1&b=2</b>";
+$MESS["ESOL_RR_SITE"] = "Сайт";
+$MESS["ESOL_RR_COMMENT"] = "Комментарий";
+$MESS["ESOL_RR_BTN_SAVE"] = "Сохранить";
+$MESS["ESOL_RR_BTN_APPLY"] = "Применить";
+$MESS["ESOL_RR_BTN_CANCEL"] = "Отменить";
+$MESS["ESOL_RR_TO_REDIRECT_LIST"] = "К списку редиректов";
+$MESS["ESOL_RR_NOT_SET_OLD_URL"] = 'Не задано поле "Старый URL"';
+$MESS["ESOL_RR_NOT_SET_NEW_URL"] = 'Не задано поле "Новый URL"';
+$MESS["ESOL_RR_NOT_SET_SITE_ID"] = 'Не задано поле "Сайт"';
+$MESS["ESOL_RR_YES"] = "Да";
+$MESS["ESOL_RR_NO"] = "Нет";
+$MESS["ESOL_RR_URL_EXAMPLE"] = "URL указывается без домена. Например: %s";
+$MESS["ESOL_RR_REGEXP"] = "Включить поиск по регулярным выражениям";
+$MESS["ESOL_RR_REGEXP_HINT"] = "С данной опцией старый URL можно будет задать в виде регулярного выражения";
+$MESS["ESOL_RR_ACTIVE"] = "Активность";
+$MESS["ESOL_RR_FOR404"] = "Использовать только на страницах 404";
+$MESS["ESOL_RR_FOR404_HINT"] = "При включении этой опции редирект будет применяться только на страницах со статусом 404";
+$MESS["ESOL_RR_TEXT_301"] = "перемещено навсегда";
+$MESS["ESOL_RR_TEXT_302"] = "перемещено временно";
+$MESS["ESOL_RR_TEXT_410"] = "удалено";
+$MESS["ESOL_RR_ERROR_DOUBLE"] = "Редирект с таким &laquo;Старым URL&raquo; уже существует";
+?>

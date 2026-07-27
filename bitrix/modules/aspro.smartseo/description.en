@@ -1,0 +1,13 @@
+<b>New in this version and improvements:</b>
+<ul>
+    <li>Added the ability to change the description type to HTML when generating text for infoblock elements and sections (SEO-116)</li>
+</ul>
+<br />
+<b>Fixes:</b>
+<ul>
+    <li>When generating landing pages, the options for separating multiple values ​​and spaces in "String" properties did not work (SEO-202)</li>
+    <li>Landing pages and tags were not generated if the condition did not specify a value for the "Number" property (SEO-207)</li>
+    <li>The landing page did not work in the catalog filter if the property's character code contained an underscore (SEO-197)</li>
+</ul>
+<br />
+<b>Attention!!! This update changes the logic for generating friendly URLs. Before launching landing page generation using the old rules, test it on a small sample: create them and set up 301 redirects to the new landing pages!

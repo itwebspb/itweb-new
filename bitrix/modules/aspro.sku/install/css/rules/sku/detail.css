@@ -1,0 +1,35 @@
+.aspro-sku__ofers-property-table-cell {
+  position: relative;
+}
+.aspro-sku__delete-btn {
+  background: url("/bitrix/panel/main/images/popup_sprite.png") -10px -99px;
+  border: none;
+  cursor: pointer;
+  height: 10px;
+  left: 100%;
+  margin-left: 4px;
+  opacity: 0.4;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 0.15s ease;
+  width: 10px;
+}
+
+.aspro-sku__delete-btn:hover {
+  opacity: 1;
+}
+
+.aspro-sku__ofers-property-table-row:only-of-type .aspro-sku__delete-btn {
+  display: none;
+}
+
+.aspro-control--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+[data-optioncode]:has(input[type="text"], input[type="radio"], select) .adm-detail-content-cell-l {
+  vertical-align: baseline;
+  line-height: 2rem;
+}

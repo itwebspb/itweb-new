@@ -1,0 +1,64 @@
+#global_menu_global_menu_aspro {
+	.adm-main-menu-item-icon {
+		height: 48px;
+		background: rgba(0, 0, 0, 0) url("../../images/aspro.max/global.png") no-repeat scroll 21px 12px;
+		opacity: 1;
+	}
+
+	.adm-main-menu-item-text {
+		line-height: 11px;
+	}
+
+	&.adm-main-menu-item-active,
+	&:hover {
+		.adm-main-menu-item-icon {
+			background: rgba(0, 0, 0, 0) url("../../images/aspro.max/global_active.png") no-repeat scroll 21px 12px;
+		}
+	}
+}
+
+#_global_menu_aspro_items {
+	.imi {
+		--position: -184px;
+		background: rgba(0, 0, 0, 0) url("../../images/aspro.max/menu.png?ver=2.9.3") no-repeat scroll var(--position) 3px;
+	}
+	.imi_control_center {
+		--position: 8px;
+	}
+	.imi_typography {
+		--position: -23px;
+	}
+  .imi_pages {
+		--position: -55px;
+	}
+	.imi_contacts {
+		--position: -151px;
+	}
+	.imi_sale {
+		--position: -119px;
+	}
+  .imi_marketing {
+		--position: -87px;
+	}
+	.imi_gs {
+		--position: -246px;
+	}
+	.imi_pwa {
+		--position: -213px;
+	}
+  .imi_smartseo {
+		--position: -279px;
+	}
+  .imi_campaign_master {
+		--position: -312px;
+	}
+  .imi_stickers {
+		--position: -343px;
+	}
+  .imi_main_popup {
+		--position: -374px;
+	}
+  .imi_main_sku {
+		--position: -405px;
+	}
+}

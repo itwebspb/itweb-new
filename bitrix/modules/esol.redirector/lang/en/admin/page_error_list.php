@@ -1,0 +1,29 @@
+<?
+$MESS["ESOL_RR_ERROR_LIST_TITLE"] = "List of 404 errors";
+$MESS["ESOL_RR_ERRORS_LIST"] = "List of 404 errors";
+$MESS["ESOL_RR_PL_URL"] = "URL";
+$MESS["ESOL_RR_PL_VIEWS"] = "Number of views";
+$MESS["ESOL_RR_PL_STATUS"] = "Date of first viewing";
+$MESS["ESOL_RR_PL_AUTO"] = "Date of last viewing";
+$MESS["ESOL_RR_PL_LAST_USER_AGENT"] = "User-agent of last viewing";
+$MESS["ESOL_RR_PL_LAST_REFERER"] = "Referer of last viewing";
+$MESS["ESOL_RR_PL_LAST_IP"] = "IP of last viewing";
+$MESS["ESOL_RR_PL_SITE_ID"] = "Site";
+$MESS["ESOL_RR_ERROR_DELETE"] = "Remove";
+$MESS["ESOL_RR_ERROR_DELETE_CONFIRM"] = "Are you sure you want to delete the record?";
+$MESS["ESOL_RR_FILTER_URL"] = "URL";
+$MESS["ESOL_RR_FILTER_VIEWS"] = "Number of views";
+$MESS["ESOL_RR_FILTER_DATE_FIRST"] = "Date of first viewing";
+$MESS["ESOL_RR_FILTER_DATE_LAST"] = "Date of last viewing";
+$MESS["ESOL_RR_FILTER_LAST_USER_AGENT"] = "User-agent of last viewing";
+$MESS["ESOL_RR_FILTER_LAST_REFERER"] = "Referer of last viewing";
+$MESS["ESOL_RR_FILTER_LAST_IP"] = "IP of last viewing";
+$MESS["ESOL_RR_ALL"] = "All";
+$MESS["ESOL_RR_ERROR_DELETING_TYPE"] = "Error deleting the record";
+$MESS["ESOL_RR_ERROR_UPDATING_REC"] = "Error editing the record";
+$MESS["ESOL_RR_YES"] = "Yes";
+$MESS["ESOL_RR_NO"] = "No";
+$MESS["ESOL_RR_TO_NEW_REDIRECT"] = "Create a redirect for this page";
+$MESS["ESOL_RR_ERROR_DISABLED_STAT"] = "Error 404 statistics disabled.";
+$MESS["ESOL_RR_ERROR_ENABLE_STAT"] = "Enable";
+?>

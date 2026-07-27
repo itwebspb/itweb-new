@@ -1,0 +1,6 @@
+<?php
+$MESS['ESOL_REDIRECTOR_MENU_PARENT'] = 'Redirects';
+$MESS['ESOL_REDIRECTOR_MENU_SETTINGS'] = 'Module settings';
+$MESS['ESOL_REDIRECTOR_MENU_REDIRECT_LIST'] = 'Redirect list';
+$MESS['ESOL_REDIRECTOR_MENU_ERRORS_404'] = 'List of 404 errors';
+?>

@@ -1,0 +1,17 @@
+.ui-alert.aspro-ui-alert {
+  margin-bottom: 0px;
+}
+
+.aspro-ui-popup__content {
+  padding: 20px;
+  min-width: 250px;
+  font: 14px / 20px "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+}
+.aspro-popup-window:has(.popup-window-buttons) .aspro-ui-popup__content {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* common popup errors */
+div[id$="-main-grid-message"]:has(.main-grid-message-error) {
+  padding: 30px 30px 20px 30px;
+}
