@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # core / Aspro.Max solution require + MariaDB + Composer.
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		ca-certificates curl git sudo unzip \
+		ca-certificates curl git sudo unzip openssh-client rsync \
 		apache2 libapache2-mod-php8.3 \
 		php8.3-cli php8.3-common php8.3-mysql php8.3-mbstring php8.3-xml \
 		php8.3-curl php8.3-gd php8.3-zip php8.3-opcache php8.3-intl \
