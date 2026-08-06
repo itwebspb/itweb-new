@@ -6,5 +6,7 @@
 	},
 	"install": "bash .cursor/install.sh",
 	"start": "bash .cursor/start.sh",
-	"ports": [80]
+	"ports": [
+		{ "name": "web server", "port": 80 }
+	]
 }
