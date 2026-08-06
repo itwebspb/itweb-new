@@ -19,11 +19,14 @@ if ! sudo mariadb -e "SELECT 1" >/dev/null 2>&1; then
 	done
 fi
 
-# Make sure the Bitrix schema/user exist (no-op once created).
+# Make sure the Bitrix schema/user exist (no-op once created). Both the socket
+# (localhost) and TCP (127.0.0.1) hosts are granted so PHP can connect either way.
 sudo mariadb <<SQL || true
 CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER IF NOT EXISTS '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_PASS}';
+CREATE USER IF NOT EXISTS '${DB_USER}'@'127.0.0.1' IDENTIFIED BY '${DB_PASS}';
 GRANT ALL PRIVILEGES ON \`${DB_NAME}\`.* TO '${DB_USER}'@'localhost';
+GRANT ALL PRIVILEGES ON \`${DB_NAME}\`.* TO '${DB_USER}'@'127.0.0.1';
 FLUSH PRIVILEGES;
 SQL
 

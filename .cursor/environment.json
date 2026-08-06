@@ -1,10 +1,10 @@
 {
 	"name": "1C-Bitrix (itweb-new)",
 	"user": "ubuntu",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
+	"build": { "dockerfile": "Dockerfile" },
 	"install": "bash .cursor/install.sh",
 	"start": "bash .cursor/start.sh",
-	"ports": [80]
+	"ports": [
+		{ "name": "web server", "port": 80 }
+	]
 }
