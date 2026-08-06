@@ -134,16 +134,34 @@
 .dm-tariff-features li:before { content: '✓'; position: absolute; left: 0; top: 8px; color: var(--dm-accent); font-weight: 700; }
 .dm-tariff .dm-btn { margin-top: auto; }
 
-/* ---- Timeline (этапы) ---- */
-.dm-timeline { position: relative; max-width: 820px; margin: 0 auto; padding-left: 8px; }
-.dm-timeline:before { content: ''; position: absolute; left: 19px; top: 8px; bottom: 8px; width: 2px; background: var(--dm-border); }
-.dm-timeline-item { position: relative; padding: 0 0 30px 58px; }
-.dm-timeline-item:last-child { padding-bottom: 0; }
-.dm-timeline-dot { position: absolute; left: 8px; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: var(--dm-accent);
-	box-shadow: 0 0 0 6px var(--dm-accent-soft); }
-.dm-timeline-content { background: #fff; border: 1px solid var(--dm-border); border-radius: var(--dm-radius); padding: 20px 22px; box-shadow: var(--dm-shadow); }
-.dm-timeline-content h3 { font-size: 18px; margin-bottom: 8px; }
-.dm-timeline-content p { margin: 0; font-size: 15px; color: var(--dm-muted); line-height: 1.8; }
+/* ---- Timeline / Этапы (зигзаг с красными кружками, референс pixelplus AI SEO) ---- */
+.dm-timeline { position: relative; max-width: 1000px; margin: 8px auto 0; }
+.dm-step { position: relative; display: flex; align-items: flex-start; gap: 30px; width: 58%; padding-bottom: 48px; }
+.dm-step:last-child { padding-bottom: 0; }
+.dm-step:nth-child(even) { margin-left: 42%; }
+.dm-step-media { position: relative; flex: 0 0 104px; z-index: 2; }
+.dm-step-circle { width: 104px; height: 104px; border-radius: 50%; background: var(--dm-accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 28px rgba(220, 30, 40, .30); }
+.dm-step-circle svg { width: 46px; height: 46px; stroke: #fff; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.dm-step-num { position: absolute; top: -4px; left: -4px; width: 30px; height: 30px; border-radius: 50%; background: #3a3f47; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0, 0, 0, .22); }
+.dm-step-body { padding-top: 22px; }
+.dm-step-body h3 { font-size: 20px; margin-bottom: 8px; font-weight: 800; }
+.dm-step-body h3 .n { color: var(--dm-accent); }
+.dm-step-body p { margin: 0; color: var(--dm-muted); font-size: 15px; line-height: 1.7; }
+/* Пунктирные дуги-коннекторы между кружками */
+.dm-step:not(:last-child)::after { content: ''; position: absolute; height: 48px; pointer-events: none; z-index: 1; }
+.dm-step:nth-child(odd):not(:last-child)::after { left: 52px; top: 98px; width: 72%; border-right: 3px dotted #cfd4da; border-bottom: 3px dotted #cfd4da; border-bottom-right-radius: 70px; }
+.dm-step:nth-child(even):not(:last-child)::after { right: calc(100% - 52px); top: 98px; width: 72%; border-left: 3px dotted #cfd4da; border-bottom: 3px dotted #cfd4da; border-bottom-left-radius: 70px; }
+
+@media (max-width: 767px) {
+	.dm-step, .dm-step:nth-child(even) { width: 100%; margin-left: 0; gap: 18px; padding-bottom: 32px; }
+	.dm-step-media { flex: 0 0 72px; }
+	.dm-step-circle { width: 72px; height: 72px; }
+	.dm-step-circle svg { width: 34px; height: 34px; }
+	.dm-step-num { width: 26px; height: 26px; font-size: 13px; }
+	.dm-step-body { padding-top: 4px; }
+	.dm-step:nth-child(odd):not(:last-child)::after,
+	.dm-step:nth-child(even):not(:last-child)::after { left: 35px; right: auto; top: 72px; width: 0; height: calc(100% - 72px); border: 0; border-left: 3px dotted #cfd4da; border-radius: 0; }
+}
 
 /* ---- Solution card (готовые решения) ---- */
 .dm-solution { background: #fff; border: 1px solid var(--dm-border); border-radius: var(--dm-radius); padding: 26px 22px; text-align: center;
