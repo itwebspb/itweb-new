@@ -6,6 +6,8 @@ global $APPLICATION, $arRegion, $arSite, $arTheme, $bIndexBot, $bIframeMode;
 $arSite = CSite::GetByID(SITE_ID)->Fetch();
 $htmlClass = ($_REQUEST && isset($_REQUEST['print']) ? 'print' : false);
 $bIncludedModule = (\Bitrix\Main\Loader::includeModule("aspro.max"));?>
+<?// ITWEB design model для страниц услуг (namespaced .dm-page)
+$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH."/css/design-model.css");?>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>" <?=($htmlClass ? 'class="'.$htmlClass.'"' : '')?> <?=($bIncludedModule ? CMax::getCurrentHtmlClass() : '')?>>
