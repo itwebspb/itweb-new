@@ -7,6 +7,13 @@ set -euo pipefail
 DB_NAME="${BITRIX_DB_NAME:-sitemanager}"
 DB_USER="${BITRIX_DB_USER:-bitrix}"
 DB_PASS="${BITRIX_DB_PASS:-bitrix}"
+SITE_HOST="${BITRIX_SITE_HOST:-itweb-new.local}"
+
+echo "==> Ensuring ${SITE_HOST} resolves locally (/etc/hosts)"
+# /etc/hosts is reset on each container boot, so (re)add the entry every start.
+if ! grep -qE "[[:space:]]${SITE_HOST}(\$|[[:space:]])" /etc/hosts; then
+	echo "127.0.0.1 ${SITE_HOST} www.${SITE_HOST}" | sudo tee -a /etc/hosts >/dev/null
+fi
 
 echo "==> Starting MariaDB"
 sudo mkdir -p /run/mysqld
