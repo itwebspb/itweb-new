@@ -146,33 +146,64 @@
 .dm-tariff-features li:before { content: '✓'; position: absolute; left: 0; top: 8px; color: var(--dm-accent); font-weight: 700; }
 .dm-tariff .dm-btn { margin-top: auto; }
 
-/* ---- Timeline / Этапы (зигзаг с красными кружками, референс pixelplus AI SEO) ---- */
-.dm-timeline { position: relative; max-width: 1000px; margin: 8px auto 0; }
-.dm-step { position: relative; display: flex; align-items: flex-start; gap: 30px; width: 58%; padding-bottom: 48px; }
-.dm-step:last-child { padding-bottom: 0; }
-.dm-step:nth-child(even) { margin-left: 42%; }
-.dm-step-media { position: relative; flex: 0 0 104px; z-index: 2; }
-.dm-step-circle { width: 104px; height: 104px; border-radius: 50%; background: var(--dm-accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 28px rgba(220, 30, 40, .30); }
+/* ---- Timeline / Этапы (зигзаг, пунктир как на pixelplus.ru/ai-seo work-stages) ---- */
+.dm-timeline {
+	--dm-circle: 104px;
+	position: relative; max-width: 1000px; margin: 8px auto 0; overflow: visible;
+}
+.dm-step {
+	--dm-item-width: calc(50% + var(--dm-circle) / 2);
+	position: relative; display: flex; align-items: flex-start; gap: 24px;
+	max-width: var(--dm-item-width); width: 100%; overflow: visible;
+}
+.dm-step + .dm-step { margin-top: 40px; }
+.dm-step:nth-child(even) { margin-left: calc(100% - var(--dm-item-width)); }
+.dm-step-media { position: relative; flex: 0 0 var(--dm-circle); width: var(--dm-circle); z-index: 2; }
+.dm-step-circle { width: var(--dm-circle); height: var(--dm-circle); border-radius: 50%; background: var(--dm-accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 28px rgba(220, 30, 40, .30); }
 .dm-step-circle svg { width: 46px; height: 46px; stroke: #fff; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .dm-step-num { position: absolute; top: -4px; left: -4px; width: 30px; height: 30px; border-radius: 50%; background: #3a3f47; color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0, 0, 0, .22); }
 .dm-step-body { padding-top: 22px; }
 .dm-step-body h3 { font-size: 20px; margin-bottom: 8px; font-weight: 800; }
 .dm-step-body h3 .n { color: var(--dm-accent); }
 .dm-step-body p { margin: 0; color: var(--dm-muted); font-size: 15px; line-height: 1.7; }
-/* Пунктирные дуги-коннекторы между кружками */
-.dm-step:not(:last-child)::after { content: ''; position: absolute; height: 48px; pointer-events: none; z-index: 1; }
-.dm-step:nth-child(odd):not(:last-child)::after { left: 52px; top: 98px; width: 72%; border-right: 3px dotted #cfd4da; border-bottom: 3px dotted #cfd4da; border-bottom-right-radius: 70px; }
-.dm-step:nth-child(even):not(:last-child)::after { right: calc(100% - 52px); top: 98px; width: 72%; border-left: 3px dotted #cfd4da; border-bottom: 3px dotted #cfd4da; border-bottom-left-radius: 70px; }
+
+/* Пунктир под блоком: нечётные └ к левому боку следующего, чётные ┘-хвост под текстом */
+.dm-step:not(:last-child)::before {
+	content: ''; position: absolute; top: calc(100% + 12px); height: 90px;
+	border-bottom: 2px dotted #a6a6a6; pointer-events: none; z-index: 1;
+	width: calc(100% - var(--dm-circle) * 1.5 - 1em); box-sizing: border-box;
+}
+.dm-step:nth-child(odd):not(:last-child)::before {
+	left: calc(var(--dm-circle) / 2);
+	border-left: 2px dotted #a6a6a6;
+	border-radius: 0 0 0 80px;
+}
+.dm-step:nth-child(even):not(:last-child)::before {
+	left: calc(var(--dm-circle) + 1em);
+	width: calc(100% - var(--dm-circle) - 2em);
+	border-right: 2px dotted #a6a6a6;
+	border-radius: 0 0 80px 0;
+}
+/* Вертикальный пунктир от низа нечётного круга вниз к коннектору */
+.dm-step:nth-child(odd):not(:last-child)::after {
+	content: ''; position: absolute; left: calc(var(--dm-circle) / 2);
+	top: var(--dm-circle); height: calc(100% - var(--dm-circle) + 12px);
+	border-left: 2px dotted #adadad; pointer-events: none; z-index: 1;
+}
 
 @media (max-width: 767px) {
-	.dm-step, .dm-step:nth-child(even) { width: 100%; margin-left: 0; gap: 18px; padding-bottom: 32px; }
-	.dm-step-media { flex: 0 0 72px; }
-	.dm-step-circle { width: 72px; height: 72px; }
+	.dm-timeline { --dm-circle: 72px; }
+	.dm-step, .dm-step:nth-child(even) { max-width: 100%; margin-left: 0; gap: 18px; }
+	.dm-step + .dm-step { margin-top: 28px; }
 	.dm-step-circle svg { width: 34px; height: 34px; }
 	.dm-step-num { width: 26px; height: 26px; font-size: 13px; }
 	.dm-step-body { padding-top: 4px; }
-	.dm-step:nth-child(odd):not(:last-child)::after,
-	.dm-step:nth-child(even):not(:last-child)::after { left: 35px; right: auto; top: 72px; width: 0; height: calc(100% - 72px); border: 0; border-left: 3px dotted #cfd4da; border-radius: 0; }
+	.dm-step:not(:last-child)::before,
+	.dm-step:nth-child(odd):not(:last-child)::after { display: none; }
+	.dm-step:not(:last-child) .dm-step-media::after {
+		content: ''; position: absolute; left: 50%; top: calc(100% + 4px); bottom: -24px;
+		border-left: 2px dotted #a6a6a6; pointer-events: none;
+	}
 }
 
 /* ---- Solution card (готовые решения) ---- */
