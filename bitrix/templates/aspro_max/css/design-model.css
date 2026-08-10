@@ -74,12 +74,13 @@
 	background: radial-gradient(circle, rgba(220,30,40,.55) 0%, rgba(220,30,40,0) 70%); }
 .dm-hero .dm-container { position: relative; z-index: 1; }
 .dm-hero h1 { font-size: 44px; line-height: 1.18; font-weight: 800; margin: 0 0 18px; color: #fff; max-width: 900px; }
-.dm-hero .dm-subtitle { font-size: 19px; line-height: 1.6; opacity: .92; max-width: 820px; margin: 0 0 32px; }
-.dm-hero-benefits { display: flex; flex-wrap: wrap; gap: 22px 30px; margin: 0 0 36px; }
+.dm-hero .dm-subtitle { font-size: 19px; line-height: 1.6; opacity: .92; max-width: 820px; margin: 0 0 48px; }
+.dm-hero-benefits { display: flex; flex-wrap: wrap; gap: 22px 30px; margin: 8px 0 36px; }
 .dm-hero-benefit { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 15px; }
+/* Hero icons: same style as .dm-ico (red circle 55×55, thin white SVG, soft shadow) */
 .dm-hero-benefit .ico { width: 55px; height: 55px; flex: 0 0 55px; display: flex; align-items: center; justify-content: center;
-	border-radius: 50%; background: rgba(255, 255, 255, .12); border: 1px solid rgba(255,255,255,.18);
-	box-shadow: 0 4px 14px rgba(0, 0, 0, .18); }
+	border-radius: 50%; background: var(--dm-accent); border: none;
+	box-shadow: 0 4px 14px rgba(220, 30, 40, .25); }
 .dm-hero-benefit .ico svg { width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
 .dm-hero-buttons { display: flex; flex-wrap: wrap; gap: 14px; }
 
