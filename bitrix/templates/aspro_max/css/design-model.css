@@ -239,7 +239,9 @@
 /* ---- Final CTA (форма/заявка) ---- */
 .dm-cta { color: #fff; text-align: center; background: linear-gradient(120deg, #16181d 0%, #2a1216 60%, var(--dm-accent-dark) 130%); }
 .dm-cta h2.dm-h2 { color: #fff; }
-.dm-cta .dm-lead { color: rgba(255, 255, 255, .9); margin-bottom: 64px; }
+.dm-cta .dm-lead { color: rgba(255, 255, 255, .9); margin-bottom: 0; }
+/* Отступ кнопки сверху = снизу (Aspro обнуляет margin у p.dm-lead — вешаем на обёртку) */
+.dm-cta .dm-center { margin-top: 30px; }
 .dm-cta-guarantees { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 28px; margin: 30px 0 0; }
 .dm-cta-guarantees span { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; opacity: .95; }
 .dm-cta-guarantees span:before { content: '✓'; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; background: var(--dm-accent); color: #fff; font-size: 13px; }
