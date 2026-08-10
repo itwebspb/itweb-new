@@ -198,11 +198,14 @@
 	.dm-step-circle svg { width: 34px; height: 34px; }
 	.dm-step-num { width: 26px; height: 26px; font-size: 13px; }
 	.dm-step-body { padding-top: 4px; }
-	.dm-step:not(:last-child)::before,
-	.dm-step:nth-child(odd):not(:last-child)::after { display: none; }
-	.dm-step:not(:last-child) .dm-step-media::after {
-		content: ''; position: absolute; left: 50%; top: calc(100% + 4px); bottom: -24px;
-		border-left: 2px dotted #a6a6a6; pointer-events: none;
+	/* На мобиле только вертикаль: от низа круга до верха следующего */
+	.dm-step:not(:last-child)::before { display: none; }
+	.dm-step:not(:last-child)::after {
+		content: ''; display: block; position: absolute;
+		left: calc(var(--dm-circle) / 2); top: var(--dm-circle);
+		height: calc(100% - var(--dm-circle) + 28px); /* 28px = margin-top до следующего этапа */
+		border: 0; border-left: 2px dotted #a6a6a6; border-radius: 0;
+		pointer-events: none; z-index: 1;
 	}
 }
 
