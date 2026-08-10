@@ -112,12 +112,12 @@
 .dm-feature p { margin: 0; font-size: 14px; color: var(--dm-muted); line-height: 1.6; }
 
 /* ---- Case card (кейсы) ---- */
-.dm-case { background: #fff; border: 1px solid var(--dm-border); border-radius: var(--dm-radius-lg); overflow: hidden;
+.dm-case { display: flex; flex-direction: column; height: 100%; background: #fff; border: 1px solid var(--dm-border); border-radius: var(--dm-radius-lg); overflow: hidden;
 	box-shadow: var(--dm-shadow); transition: transform .25s ease, box-shadow .25s ease; }
 .dm-case:hover { transform: translateY(-5px); box-shadow: var(--dm-shadow-hover); }
-.dm-case-head { padding: 24px 24px 20px; color: #fff; background: linear-gradient(120deg, #23252e, #3a1116); }
+.dm-case-head { display: flex; flex-direction: column; justify-content: center; min-height: 130px; padding: 24px 24px 20px; color: #fff; background: var(--dm-accent); }
 .dm-case-head h3 { color: #fff; font-size: 20px; margin-bottom: 6px; }
-.dm-case-head p { margin: 0; font-size: 14px; opacity: .85; }
+.dm-case-head p { margin: 0; font-size: 14px; opacity: .9; }
 .dm-case-body { padding: 22px 24px 26px; }
 .dm-case-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
 .dm-case-stat { text-align: center; padding: 14px 8px; background: var(--dm-bg-alt); border-radius: 10px; }
