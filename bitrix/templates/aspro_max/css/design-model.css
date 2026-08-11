@@ -103,6 +103,18 @@
 .dm-card .dm-ico { margin-bottom: 16px; }
 .dm-card p { margin: 0; color: var(--dm-muted); font-size: 15px; line-height: 1.7; }
 
+/* Cards with CTA (e.g. доп. услуги): equal height, button bottom-aligned, equal width, centered */
+.dm-grid:has(> .dm-card > .dm-btn) { align-items: stretch; }
+.dm-card:has(> .dm-btn) { display: flex; flex-direction: column; height: 100%; }
+.dm-card:has(> .dm-btn) > p { flex: 1 1 auto; }
+.dm-card:has(> .dm-btn) > .dm-btn {
+	align-self: center;
+	margin-top: 32px;
+	width: 250px;
+	box-sizing: border-box;
+	white-space: nowrap;
+}
+
 /* ---- Feature tile (возможности) ---- */
 .dm-feature { display: flex; gap: 16px; align-items: flex-start; background: #fff; border: 1px solid var(--dm-border);
 	border-radius: var(--dm-radius); padding: 24px 22px; box-shadow: var(--dm-shadow); transition: transform .25s ease, box-shadow .25s ease; }
