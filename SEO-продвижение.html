@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO-продвижение сайтов — вывод в ТОП Яндекса и Google | ITWEB</title>
+    <meta name="description" content="Профессиональное SEO-продвижение сайтов. Вывод в ТОП-10 Яндекса и Google за 3-6 месяцев. Рост органического трафика и заявок. От 40 000 ₽/мес. Бесплатный аудит.">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #333; background: #fff; font-size: 16px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 0 80px; position: relative; overflow: hidden; }
+        .hero:before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('https://itweb-spb.ru/upload/dev2fun.imagecompress/webp/iblock/763/3qajtet76xxyyrxs4lc6fxumnlsnknh7.webp'); background-position: bottom; background-size: cover; background-repeat: no-repeat; }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 44px; margin-bottom: 20px; font-weight: 700; line-height: 1.2; }
+        .hero .subtitle { font-size: 19px; margin-bottom: 30px; opacity: 0.95; max-width: 850px; line-height: 1.6; }
+        .hero-benefits { display: flex; flex-wrap: wrap; gap: 25px; margin: 35px 0 40px; }
+        .hero-benefit { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; }
+        .hero-benefit-icon { width: 44px; height: 44px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+        .hero-buttons { display: flex; flex-wrap: wrap; gap: 15px; }
+        .btn { display: inline-block; padding: 16px 36px; border-radius: 5px; text-decoration: none; font-weight: 700; font-size: 16px; transition: all 0.3s ease; border: none; cursor: pointer; text-align: center; }
+        .btn-primary { background: #ff6b6b; color: white; box-shadow: 0 4px 15px rgba(255,107,107,0.4); }
+        .btn-primary:hover { background: #ff5252; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,107,0.5); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        .btn-secondary:hover { background: white; color: #667eea; }
+        .btn-outline { background: transparent; color: #667eea; border: 2px solid #667eea; }
+        .btn-outline:hover { background: #667eea; color: white; }
+        
+        section { padding: 70px 0; }
+        section:nth-child(even) { background: #f8f9fa; }
+        h2 { font-size: 34px; margin-bottom: 20px; text-align: center; color: #2c3e50; font-weight: 700; line-height: 1.3; }
+        h3 { font-size: 20px; color: #2c3e50; font-weight: 700; margin-bottom: 12px; }
+        .section-intro { text-align: center; font-size: 17px; color: #666; margin-bottom: 50px; max-width: 850px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+        .text-center { text-align: center; }
+        .mt-50 { margin-top: 50px; }
+        
+        .directions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .direction-card { background: white; padding: 40px 30px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; text-align: center; border-top: 4px solid #667eea; }
+        .direction-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(102,126,234,0.15); }
+        .direction-icon { font-size: 64px; margin-bottom: 20px; display: block; }
+        .direction-card h3 { font-size: 24px; margin-bottom: 15px; color: #2c3e50; }
+        .direction-card p { color: #666; line-height: 1.7; font-size: 15px; margin-bottom: 20px; }
+        .direction-features { list-style: none; text-align: left; margin: 20px 0; }
+        .direction-features li { padding: 8px 0; color: #555; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
+        .direction-features li:before { content: "✓ "; color: #667eea; font-weight: 700; margin-right: 8px; }
+        
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .benefit-card { background: white; padding: 30px 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; border-top: 4px solid #667eea; }
+        .benefit-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(102,126,234,0.15); }
+        .benefit-icon { font-size: 48px; margin-bottom: 15px; display: block; }
+        .benefit-card h3 { color: #2c3e50; margin-bottom: 12px; }
+        .benefit-card p { color: #666; line-height: 1.7; font-size: 15px; }
+        
+        .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .case-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+        .case-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+        .case-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; }
+        .case-header h3 { color: white; font-size: 22px; margin-bottom: 8px; }
+        .case-header p { opacity: 0.9; font-size: 15px; }
+        .case-body { padding: 25px; }
+        .case-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+        .case-stat { text-align: center; padding: 15px 10px; background: #f8f9fa; border-radius: 8px; }
+        .case-stat-value { font-size: 26px; font-weight: 700; color: #667eea; display: block; }
+        .case-stat-label { font-size: 13px; color: #666; margin-top: 5px; }
+        
+        .tariffs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .tariff-card { background: white; border-radius: 10px; padding: 35px 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: relative; transition: all 0.3s ease; }
+        .tariff-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+        .tariff-card.featured { border: 3px solid #667eea; transform: scale(1.02); }
+        .tariff-card.featured:hover { transform: scale(1.02) translateY(-5px); }
+        .tariff-badge { position: absolute; top: -12px; right: 20px; background: #ff6b6b; color: white; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        .tariff-card h3 { font-size: 22px; margin-bottom: 10px; color: #2c3e50; }
+        .tariff-duration { color: #666; font-size: 15px; margin-bottom: 15px; }
+        .tariff-price { font-size: 34px; font-weight: 700; color: #667eea; margin: 20px 0; }
+        .tariff-features { list-style: none; margin: 25px 0; }
+        .tariff-features li { padding: 10px 0; border-bottom: 1px solid #f0f0f0; color: #555; font-size: 14px; }
+        .tariff-features li:before { content: "✓ "; color: #667eea; font-weight: 700; margin-right: 8px; }
+        
+        .timeline { position: relative; max-width: 900px; margin: 50px auto 0; padding: 20px 0; }
+        .timeline:before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: linear-gradient(180deg, #667eea 0%, #764ba2 100%); border-radius: 2px; }
+        .timeline-item { margin-bottom: 40px; position: relative; width: 50%; padding: 0 40px; }
+        .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+        .timeline-item:nth-child(even) { left: 50%; }
+        .timeline-content { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: relative; }
+        .timeline-dot { position: absolute; width: 22px; height: 22px; background: #667eea; border-radius: 50%; top: 30px; border: 4px solid white; box-shadow: 0 0 0 3px #667eea; z-index: 1; }
+        .timeline-item:nth-child(odd) .timeline-dot { right: -11px; }
+        .timeline-item:nth-child(even) .timeline-dot { left: -11px; }
+        .timeline-content h3 { color: #667eea; font-size: 18px; margin-bottom: 12px; }
+        .timeline-content p { color: #555; font-size: 14px; line-height: 1.7; }
+        
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 40px; }
+        .tool-item { background: white; padding: 22px 20px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 15px; transition: all 0.3s ease; }
+        .tool-item:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .tool-icon { font-size: 32px; flex-shrink: 0; }
+        .tool-item h3 { font-size: 16px; margin-bottom: 4px; }
+        .tool-item p { color: #666; font-size: 13px; margin: 0; }
+        
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 40px; }
+        .review-card { background: white; padding: 30px 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: relative; }
+        .review-card:before { content: '"'; position: absolute; top: 10px; right: 20px; font-size: 80px; color: #667eea; opacity: 0.2; font-family: Georgia, serif; line-height: 1; }
+        .review-stars { color: #ffc107; font-size: 20px; margin-bottom: 15px; }
+        .review-text { font-style: italic; margin-bottom: 20px; line-height: 1.8; color: #555; font-size: 15px; position: relative; z-index: 1; }
+        .review-author { font-weight: 700; color: #667eea; font-size: 16px; margin-bottom: 4px; }
+        .review-company { color: #888; font-size: 13px; }
+        
+        .faq-list { max-width: 900px; margin: 40px auto 0; }
+        .faq-item { background: white; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); overflow: hidden; }
+        .faq-question { padding: 22px 25px; cursor: pointer; font-weight: 700; font-size: 17px; display: flex; justify-content: space-between; align-items: center; color: #2c3e50; transition: all 0.3s ease; user-select: none; }
+        .faq-question:hover { background: #f8f9fa; }
+        .faq-question.active { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .faq-toggle { font-size: 24px; transition: transform 0.3s ease; flex-shrink: 0; margin-left: 15px; }
+        .faq-question.active .faq-toggle { transform: rotate(45deg); }
+        .faq-answer { padding: 0 25px; max-height: 0; overflow: hidden; transition: all 0.3s ease; color: #555; line-height: 1.8; font-size: 15px; }
+        .faq-answer.active { padding: 0 25px 22px; max-height: 500px; }
+        
+        .additional-services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .additional-service-card { background: white; padding: 35px 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; text-align: center; border-left: 4px solid #667eea; }
+        .additional-service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(102,126,234,0.15); }
+        .additional-service-icon { font-size: 56px; margin-bottom: 15px; display: block; }
+        .additional-service-card h3 { font-size: 20px; margin-bottom: 12px; color: #2c3e50; }
+        .additional-service-card p { color: #666; line-height: 1.7; font-size: 15px; margin-bottom: 20px; }
+        
+        section.form-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 0; }
+        .form-section h2 { color: white; }
+        .contact-form { max-width: 600px; margin: 30px auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); text-align: left; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 5px; font-size: 15px; font-family: inherit; transition: border-color 0.3s ease; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #667eea; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-submit { width: 100%; padding: 16px; background: #ff6b6b; color: white; border: none; border-radius: 5px; font-size: 17px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; margin-top: 10px; }
+        .form-submit:hover { background: #ff5252; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,107,107,0.4); }
+        .form-guarantees { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 25px; }
+        .guarantee-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: #555; }
+        .guarantee-item span:first-child { color: #667eea; font-weight: 700; }
+        
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 36px; }
+            h2 { font-size: 28px; }
+            .timeline:before { left: 20px; }
+            .timeline-item { width: 100%; left: 0 !important; padding-left: 55px; padding-right: 0; text-align: left !important; }
+            .timeline-item .timeline-dot { left: 10px !important; right: auto !important; }
+        }
+        
+        @media (max-width: 768px) {
+            section { padding: 50px 0; }
+            .hero { padding: 60px 0 50px; }
+            .hero h1 { font-size: 28px; }
+            .hero .subtitle { font-size: 16px; }
+            h2 { font-size: 24px; }
+            .section-intro { font-size: 15px; }
+            .hero-benefits { flex-direction: column; gap: 15px; }
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { width: 100%; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-guarantees { grid-template-columns: 1fr; }
+            .contact-form { padding: 25px 20px; }
+            .tariff-card.featured { transform: none; }
+            .tariff-card.featured:hover { transform: translateY(-5px); }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 24px; }
+            .btn { padding: 14px 24px; font-size: 15px; }
+            .case-stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>SEO-продвижение сайтов</h1>
+            <p class="subtitle">Выводим сайты в ТОП-10 Яндекса и Google за 3-6 месяцев. Работаем по прозрачному чеклисту: техническая оптимизация, проработка коммерческих страниц, качественный контент, внутренняя перелинковка. От 40 000 ₽/мес. Бесплатный аудит перед стартом.</p>
+            
+            <div class="hero-benefits">
+                <div class="hero-benefit">
+                    <div class="hero-benefit-icon">🎯</div>
+                    <span>100+ проектов</span>
+                </div>
+                <div class="hero-benefit">
+                    <div class="hero-benefit-icon">📈</div>
+                    <span>Рост позиций</span>
+                </div>
+                <div class="hero-benefit">
+                    <div class="hero-benefit-icon">⚡</div>
+                    <span>Результат за 3-6 мес</span>
+                </div>
+                <div class="hero-benefit">
+                    <div class="hero-benefit-icon">🛡</div>
+                    <span>Гарантия 12 месяцев</span>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <a href="#form" class="btn btn-primary">Заказать звонок</a>
+                <a href="#cases" class="btn btn-secondary">Смотреть кейсы</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Направления SEO-продвижения</h2>
+        <p class="section-intro">Мы подбираем стратегию продвижения под конкретный тип сайта и отрасль. Выберите направление, которое подходит вашему бизнесу.</p>
+        
+        <div class="directions-grid">
+            <div class="direction-card">
+                <span class="direction-icon">💻</span>
+                <h3>SEO по типу сайта</h3>
+                <p>Индивидуальная стратегия оптимизации под архитектуру и цели вашего ресурса.</p>
+                <ul class="direction-features">
+                    <li>SEO для интернет-магазинов</li>
+                    <li>SEO для корпоративных сайтов</li>
+                    <li>SEO для лендингов</li>
+                    <li>SEO для сайтов-каталогов</li>
+                </ul>
+				<a href="#" class="btn btn-primary">Заказать услугу</a>
+            </div>
+            
+            <div class="direction-card">
+                <span class="direction-icon">🏭</span>
+                <h3>Отраслевое SEO</h3>
+                <p>Глубокое понимание специфики вашей ниши, болей клиентов и конкурентной среды.</p>
+                <ul class="direction-features">
+                    <li>Медицина и клиники</li>
+                    <li>Строительство и ремонт</li>
+                    <li>Недвижимость</li>
+                    <li>B2B, общепит, образование</li>
+                </ul>
+				<a href="#" class="btn btn-primary">Заказать услугу</a>
+            </div>
+            
+            <div class="direction-card">
+                <span class="direction-icon">🚀</span>
+                <h3>Специальные SEO-задачи</h3>
+                <p>Точечные услуги для усиления позиций и решения нестандартных задач.</p>
+                <ul class="direction-features">
+                    <li>Технический и SEO-аудит</li>
+                    <li>Сбор семантического ядра</li>
+                    <li>Региональное продвижение</li>
+                    <li>SERM и работа с репутацией</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Заказать услугу</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Почему выбирают SEO-продвижение от Ай Ти Веб</h2>
+        <p class="section-intro">Мы работаем по прозрачной методологии без «чёрных» методов и пустых обещаний. Каждый шаг можно проверить и измерить.</p>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <span class="benefit-icon">📊</span>
+                <h3>Индивидуальная стратегия</h3>
+                <p>Разрабатываем план продвижения с учётом вашей ниши, конкурентов и целей бизнеса. Никаких шаблонных решений.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">🎯</span>
+                <h3>Измеримые результаты</h3>
+                <p>Количество запросов в ТОП-30, рост трафика, конверсия. Отчёты — ежемесячно.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">👨‍💻</span>
+                <h3>Опытная команда</h3>
+                <p>SEO-специалисты, копирайтеры, маркетологи. Все с опытом от 5 лет и сертификатами Яндекса и Google.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">📈</span>
+                <h3>Прозрачная отчётность</h3>
+                <p>Ежемесячные отчёты по позициям, трафику и выполненным работам. Доступ к личному кабинету с аналитикой 24/7.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">🛡</span>
+                <h3>Только белые методы</h3>
+                <p>Используем только безопасные методы SEO: техническая оптимизация, качественный контент, естественный линкбилдинг.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <span class="benefit-icon">⚡</span>
+                <h3>Гарантия 12 месяцев</h3>
+                <p>Бесплатно исправляем баги, возникшие не по вашей вине. Техподдержка и сопровождение после прекращения работ от 5 000 ₽/мес.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="cases">
+    <div class="container">
+        <h2>Кейсы по SEO-продвижению</h2>
+        <p class="section-intro">Более 100 успешных проектов по органическому продвижению. Работаем с компаниями из Москвы, СПб, Екатеринбурга, Краснодара и других городов России.</p>
+        
+        <div class="cases-grid">
+            <div class="case-card">
+                <div class="case-header">
+                    <h3>SEO интернет-магазина стройматериалов</h3>
+                    <p>СПб • Комплексное SEO • 6 месяцев</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="case-stat">
+                            <span class="case-stat-value">+450%</span>
+                            <span class="case-stat-label">рост трафика</span>
+                        </div>
+                        <div class="case-stat">
+                            <span class="case-stat-value">280</span>
+                            <span class="case-stat-label">заявок/мес</span>
+                        </div>
+                        <div class="case-stat">
+                            <span class="case-stat-value">ТОП-3</span>
+                            <span class="case-stat-label">по 45 запросам</span>
+                        </div>
+                        <div class="case-stat">
+                            <span class="case-stat-value">180 000 ₽</span>
+                            <span class="case-stat-label">бюджет/мес</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-outline">Смотреть кейс</a>
+                </div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-header">
+                    <h3>SEO сайта медицинской клиники</h3>
+                    <p>Краснодар • Локальное SEO • 4 месяца</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="case-stat">
+                            <span class="case-stat-value">+320%</span>
+                            <span class="case-stat-label">рост записей</span>
+                        </div>
+                        <div class="case-stat">
+                            <span class="case-stat-value">150</span>
+                            <span class="case-stat-label">записей/мес</span>
+                        </div>
+                        <div class="case-stat">
+                            <span class="case-stat-value">ТОП-5</span>
+                            <span class="case-stat-label">по 30 запросам</span>
+                        </div>
+                        <div class="case-stat">
+                            <span class="case-stat-value">90 000 ₽</span>
+                            <span class="case-stat-label">бюджет/мес</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-outline">Смотреть кейс</a>
+                </div>
+            </div>
+            
+            <div class="case-card">
+                <div class="case-header">
+                    <h3>SEO корпоративного сайта юридической фирмы</h3>
+                    <p>Москва • SEO + контент • 5 месяцев</p>
+                </div>
+                <div class="case-body">
+                    <div class="case-stats">
+                        <div class="case-stat">
+                            <span class="case-stat-value">+210%</span>
+                            <span class="case-stat-label">рост трафика</span>
+                        </div>
+                        <div class="case-stat">
+                            <span class="case-stat-value">95</span>
+                            <span class="case-stat-label">заявок/мес</span>
+                        </div>
+                        <div class="case-stat">
+                            <span class="case-stat-value">ТОП-10</span>
+                            <span class="case-stat-label">по 60 запросам</span>
+                        </div>
+                        <div class="case-stat">
+                            <span class="case-stat-value">70 000 ₽</span>
+                            <span class="case-stat-label">бюджет/мес</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-outline">Смотреть кейс</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-50">
+            <a href="#" class="btn btn-primary">Смотреть все 100+ кейсов</a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Тарифы на SEO-продвижение</h2>
+        <p class="section-intro">Стоимость зависит от конкуренции в нише, текущего состояния сайта и объёма работ. Ниже — базовые тарифы. Точную цену рассчитаем после аудита.</p>
+        
+        <div class="tariffs-grid">
+            <div class="tariff-card">
+                <h3>SEO-продвижение (Старт)</h3>
+                <div class="tariff-duration">⏱ от 3 месяцев</div>
+                <div class="tariff-price">от 40 000 ₽/мес</div>
+                <ul class="tariff-features">
+                    <li>Аудит сайта и конкурентов</li>
+                    <li>Семантическое ядро (до 100 запросов)</li>
+                    <li>Техническая оптимизация</li>
+                    <li>Написание SEO-контента</li>
+                    <li>Проработка коммерческих страниц</li>
+                    <li>Ежемесячные отчёты</li>
+                </ul>
+                <a href="#form" class="btn btn-primary">Заказать SEO</a>
+            </div>
+            
+            <div class="tariff-card featured">
+                <span class="tariff-badge">Популярный</span>
+                <h3>SEO-продвижение (Бизнес)</h3>
+                <div class="tariff-duration">⏱ от 3 месяцев</div>
+                <div class="tariff-price">от 60 000 ₽/мес</div>
+                <ul class="tariff-features">
+                    <li>Всё из тарифа "Старт" +</li>
+                    <li>Расширенное семантическое ядро</li>
+                    <li>Контент-маркетинг (статьи, обзоры)</li>
+                    <li>Базовый ссылочный профиль</li>
+                    <li>Работа с внутренней перелинковкой</li>
+                    <li>Персональный менеджер</li>
+                </ul>
+                <a href="#form" class="btn btn-primary">Заказать SEO</a>
+            </div>
+            
+            <div class="tariff-card">
+                <h3>SEO-продвижение (Премиум)</h3>
+                <div class="tariff-duration">⏱ от 6 месяцев</div>
+                <div class="tariff-price">от 100 000 ₽/мес</div>
+                <ul class="tariff-features">
+                    <li>Всё из тарифа "Бизнес" +</li>
+                    <li>Расширенный линкбилдинг</li>
+                    <li>A/B тестирование посадочных</li>
+                    <li>Контент-маркетинг под ключ</li>
+                    <li>Приоритетная поддержка 24/7</li>
+                    <li>Еженедельные отчёты</li>
+                </ul>
+                <a href="#form" class="btn btn-primary">Заказать SEO</a>
+            </div>
+        </div>
+        <div class="text-center mt-50">
+            <a href="#form" class="btn btn-primary">Нужен индивидуальный тариф? Сделаем</a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Дополнительные услуги по SEO</h2>
+        <p class="section-intro">Помимо ежемесячного продвижения, мы предлагаем ряд точечных услуг, которые помогут усилить эффект от оптимизации вашего сайта.</p>
+        
+        <div class="additional-services-grid">
+            <div class="additional-service-card">
+                <span class="additional-service-icon">🔍</span>
+                <h3>Аудит сайта</h3>
+                <p>Профессиональный технический и SEO-аудит сайта. Выявление ошибок, точек роста и рекомендаций по улучшению.</p>
+                <a href="/uslugi/prodvizhenie/audit/" class="btn btn-outline">Заказать аудит</a>
+            </div>
+            
+            <div class="additional-service-card">
+                <span class="additional-service-icon">📝</span>
+                <h3>Сбор семантического ядра</h3>
+                <p>Профессиональный сбор и кластеризация семантического ядра. Подбор ключевых слов для SEO и контекстной рекламы.</p>
+                <a href="/uslugi/prodvizhenie/semanticheskoe-yadro/" class="btn btn-outline">Заказать семантику</a>
+            </div>
+            
+            <div class="additional-service-card">
+                <span class="additional-service-icon">🌍</span>
+                <h3>Региональное SEO</h3>
+                <p>Продвижение сайта в регионах России. Вывод в ТОП по геозависимым запросам в городах присутствия вашего бизнеса.</p>
+                <a href="/uslugi/prodvizhenie/seo/regionalnoe/" class="btn btn-outline">Подробнее</a>
+            </div>
+            
+            <div class="additional-service-card">
+                <span class="additional-service-icon">⭐</span>
+                <h3>SERM — управление репутацией</h3>
+                <p>Управление репутацией компании в интернете. Работа с отзывами, удаление негатива, формирование положительного имиджа.</p>
+                <a href="/uslugi/prodvizhenie/seo/serm/" class="btn btn-outline">Подробнее</a>
+            </div>
+            
+            <div class="additional-service-card">
+                <span class="additional-service-icon">🎯</span>
+                <h3>Продвижение нового сайта</h3>
+                <p>Комплексное SEO-продвижение новых сайтов с нуля. Вывод в ТОП за 3-6 месяцев с гарантией результата.</p>
+                <a href="/uslugi/prodvizhenie/seo/novyy-sayt/" class="btn btn-outline">Подробнее</a>
+            </div>
+            
+            <div class="additional-service-card">
+                <span class="additional-service-icon">🏗</span>
+                <h3>SEO для вашей отрасли</h3>
+                <p>Отраслевое SEO-продвижение: медицина, строительство, недвижимость, B2B, общепит, образование. Знаем специфику вашей ниши.</p>
+                <a href="/uslugi/prodvizhenie/seo/" class="btn btn-outline">Выбрать отрасль</a>
+            </div>
+        </div>
+        <div class="text-center mt-50">
+            <a href="#form" class="btn btn-primary">Нужны другие услуги? Мы поможем</a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Этапы SEO-продвижения сайта</h2>
+        <p class="section-intro">Прозрачный процесс работы на каждом этапе. Вы всегда знаете, что происходит с вашим проектом.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Этап 1: Аудит и анализ</h3>
+                    <p>🔍 Аудит текущего сайта<br>📊 Анализ конкурентов<br>🎯 Определение целей и KPI<br>💬 Общение через Zoom/МАКС</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Этап 2: Семантическое ядро</h3>
+                    <p>🔑 Сбор и кластеризация запросов<br>📋 Составление контент-плана<br>✅ Согласование с вами</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Этап 3: Техническая оптимизация</h3>
+                    <p>⚙️ Исправление ошибок сайта<br>🚀 Ускорение загрузки<br>📱 Адаптивность<br>🛡 Безопасность</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Этап 4: Контент и перелинковка</h3>
+                    <p>📝 Написание SEO-текстов<br>🔗 Построение внутренней перелинковки<br>📊 Проработка коммерческих страниц</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Этап 5: Внешнее продвижение</h3>
+                    <p>🔗 Построение ссылочного профиля<br>📈 Регистрация в справочниках<br>📊 Работа с упоминаниями бренда</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Этап 6: Мониторинг и отчёты</h3>
+                    <p>📊 Ежемесячные отчёты<br>📈 Анализ результатов<br>🔄 Корректировка стратегии<br>🎯 Достижение KPI</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-50">
+            <a href="#form" class="btn btn-primary">Хотите узнать сроки для вашего проекта? Оставьте заявку</a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Инструменты для SEO-продвижения</h2>
+        <p class="section-intro">Используем проверенные профессиональные инструменты и сервисы для достижения максимальных результатов в органической выдаче.</p>
+        
+        <div class="tools-grid">
+            <div class="tool-item">
+                <span class="tool-icon">🔍</span>
+                <div>
+                    <h3>Яндекс.Вебмастер</h3>
+                    <p>Мониторинг индексации</p>
+                </div>
+            </div>
+            
+            <div class="tool-item">
+                <span class="tool-icon">📊</span>
+                <div>
+                    <h3>Яндекс.Метрика</h3>
+                    <p>Аналитика и цели</p>
+                </div>
+            </div>
+            
+            <div class="tool-item">
+                <span class="tool-icon">🌐</span>
+                <div>
+                    <h3>Google Search Console</h3>
+                    <p>Мониторинг Google</p>
+                </div>
+            </div>
+            
+            <div class="tool-item">
+                <span class="tool-icon">🔑</span>
+                <div>
+                    <h3>Arsenkin</h3>
+                    <p>Сбор семантики</p>
+                </div>
+            </div>
+            
+            <div class="tool-item">
+                <span class="tool-icon">📈</span>
+                <div>
+                    <h3>Keys.so</h3>
+                    <p>Анализ конкурентов</p>
+                </div>
+            </div>
+            
+            <div class="tool-item">
+                <span class="tool-icon">🔗</span>
+                <div>
+                    <h3>GoGetLinks</h3>
+                    <p>Линкбилдинг (по согласованию)</p>
+                </div>
+            </div>
+            
+            <div class="tool-item">
+                <span class="tool-icon">⚡</span>
+                <div>
+                    <h3>PageSpeed Insights</h3>
+                    <p>Оптимизация скорости</p>
+                </div>
+            </div>
+            
+            <div class="tool-item">
+                <span class="tool-icon">📝</span>
+                <div>
+                    <h3>Text.ru / Advego</h3>
+                    <p>Проверка уникальности</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-50">
+            <a href="#form" class="btn btn-primary">Нужен нестандартный подход? Обсудим</a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Что говорят наши клиенты</h2>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"Заказывали комплексное SEO-продвижение. Через 4 месяца трафик вырос на 450%, заявок стало в 5 раз больше. Гарантии по позициям выполнили на 100%. Рекомендую!"</p>
+                <p class="review-author">Аркадий, директор</p>
+                <p class="review-company">Интернет-магазин стройматериалов</p>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"Продвигали сайт медицинской клиники по локальному SEO. За 4 месяца записи выросли на 320%. Вывели в ТОП-5 по 30 запросам. Отличная команда, продолжаем сотрудничество."</p>
+                <p class="review-author">Анна, собственник</p>
+                <p class="review-company">Медицинская клиника</p>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                <p class="review-text">"Делали SEO для юридической фирмы. Количество целевых заявок выросло в 3 раза, стоимость лида снизилась на 40%. Отчёты каждый месяц, всё прозрачно. Спасибо!"</p>
+                <p class="review-author">Кристина, специалист по маркетингу</p>
+                <p class="review-company">Юридическая фирма</p>
+            </div>
+        </div>
+        <div class="text-center mt-50">
+            <a href="#" class="btn btn-primary">Смотреть все отзывы на Яндекс.Картах</a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Ответы на частые вопросы</h2>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>1. Сколько стоит SEO-продвижение сайта?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Стоимость зависит от конкуренции в нише и текущего состояния сайта. Базовый тариф — от 40 000 ₽/мес, бизнес — от 60 000 ₽/мес, премиум — от 100 000 ₽/мес. Точную цену рассчитаем после аудита.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>2. Когда будут первые результаты SEO?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Первые подвижки по низкочастотным запросам видны через 1-2 месяца. Стабильный рост трафика и позиций по среднечастотным запросам — через 3-6 месяцев. Высокочастотные запросы — от 6 месяцев.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>3. Даёте ли вы гарантии на SEO?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Да, вывод запросов в ТОП-30, рост органического трафика и конверсии.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>4. Какие методы продвижения вы используете?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Мы используем только белые (безопасные) методы SEO: техническую оптимизацию по чеклисту Яндекса и Google, качественный контент-маркетинг, проработку страниц и внутреннюю перелинковку.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>5. Работаете ли вы с регионами?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Да, мы работаем по всей России. 60% клиентов — из Москвы и СПб, 40% — из других городов. Общение онлайн через Zoom/МАКС, документы отправляем по email или через ЭДО.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>6. Как часто вы предоставляете отчёты?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Мы предоставляем подробные ежемесячные отчёты по позициям, трафику и выполненным работам. Также у вас есть доступ к личному кабинету с аналитикой 24/7.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>7. Нужно ли мне что-то делать во время продвижения?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    От вас требуется только согласование семантического ядра, контент-плана и предоставление доступов к сайту и аналитике. Всю остальную работу берём на себя.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>8. Что будет после окончания договора на SEO?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Вы можете продлить договор на сопровождение или взять управление на себя. Все материалы, доступы и отчёты остаются у вас. 85% клиентов продлевают сотрудничество.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="form" class="form-section">
+    <div class="container">
+        <h2>Готовы обсудить SEO-продвижение вашего сайта?</h2>
+        <p class="section-intro" style="color: white; opacity: 0.95;">Оставьте заявку — менеджер свяжется в течение 30 минут и рассчитает стоимость. Работаем по всей России, общение онлайн.</p>
+        
+        <div class="contact-form">
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" placeholder="Ваше имя *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Телефон *" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" placeholder="Email">
+                </div>
+                
+                <div class="form-group">
+                    <input type="url" placeholder="Адрес сайта">
+                </div>
+                
+                <div class="form-group">
+                    <select required>
+                        <option value="">Направление SEO *</option>
+                        <option value="start">SEO-продвижение (Старт, от 40 000 ₽/мес)</option>
+                        <option value="business">SEO-продвижение (Бизнес, от 60 000 ₽/мес)</option>
+                        <option value="premium">SEO-продвижение (Премиум, от 100 000 ₽/мес)</option>
+                        <option value="audit">Аудит сайта</option>
+                        <option value="semantic">Сбор семантического ядра</option>
+                        <option value="other">Другое / Не знаю</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <textarea placeholder="Комментарий"></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit">Получить бесплатный аудит и расчёт стоимости</button>
+                
+                <div class="form-guarantees">
+                    <div class="guarantee-item">
+                        <span>✓</span>
+                        <span>Перезвоним за 30 минут</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <span>✓</span>
+                        <span>Бесплатный аудит сайта</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <span>✓</span>
+                        <span>Покажем релевантные кейсы</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <span>✓</span>
+                        <span>Ответим на все вопросы</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; font-size: 17px; line-height: 2;">
+            <p>📞 <a href="tel:+78001234567" style="color: white; text-decoration: none; font-weight: 600;">+7 (800) 123-45-67</a> (бесплатно по России)</p>
+            <p>📧 <a href="mailto:info@itweb-spb.ru" style="color: white; text-decoration: none; font-weight: 600;">info@itweb-spb.ru</a></p>
+            <p>💬 <a href="#" style="color: white; text-decoration: none; font-weight: 600;">Написать в WhatsApp</a> • <a href="#" style="color: white; text-decoration: none; font-weight: 600;">Написать в Telegram</a></p>
+            <p>🏢 Офис в Санкт-Петербурге (приём по записи)</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const isActive = question.classList.contains('active');
+            
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('active'));
+            
+            if (!isActive) {
+                question.classList.add('active');
+                answer.classList.add('active');
+            }
+        });
+    });
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
