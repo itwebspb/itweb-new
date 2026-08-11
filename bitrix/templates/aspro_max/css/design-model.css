@@ -219,6 +219,62 @@
 .dm-solution .dm-ico { margin: 0 auto 14px; display: flex; }
 .dm-solution p { margin: 0; font-size: 14px; color: var(--dm-muted); line-height: 1.6; }
 
+/* Solution feature lists (SEO directions etc.) */
+.dm-solution ul {
+	list-style: none;
+	margin: 16px 0 0;
+	padding: 0;
+	text-align: left;
+}
+.dm-solution li {
+	position: relative;
+	padding: 8px 0 8px 26px;
+	font-size: 14px;
+	color: var(--dm-text);
+	border-bottom: 1px solid var(--dm-border);
+	line-height: 1.5;
+}
+.dm-solution li:last-child { border-bottom: none; }
+.dm-solution li:before {
+	content: '✓';
+	position: absolute;
+	left: 0;
+	top: 8px;
+	color: var(--dm-accent);
+	font-weight: 700;
+}
+
+/* Compact tools row */
+.dm-tool {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	background: #fff;
+	border: 1px solid var(--dm-border);
+	border-radius: var(--dm-radius);
+	padding: 18px 16px;
+	box-shadow: var(--dm-shadow);
+	transition: transform .2s ease, box-shadow .2s ease;
+}
+.dm-tool:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--dm-shadow-hover);
+}
+.dm-tool .dm-ico {
+	margin: 0;
+	flex-shrink: 0;
+}
+.dm-tool h3 {
+	font-size: 16px;
+	margin: 0 0 4px;
+}
+.dm-tool p {
+	margin: 0;
+	font-size: 13px;
+	color: var(--dm-muted);
+	line-height: 1.45;
+}
+
 /* ---- Review card (отзывы) ---- */
 .dm-review { background: #fff; border: 1px solid var(--dm-border); border-radius: var(--dm-radius-lg); padding: 28px 26px; box-shadow: var(--dm-shadow); }
 .dm-review-stars { display: flex; gap: 4px; margin-bottom: 14px; }
