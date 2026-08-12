@@ -1,0 +1,21 @@
+---
+description: Design-model (dm-page) — выбирать блоки из каталога при вёрстке посадочных услуг
+alwaysApply: true
+---
+
+# ITWEB Design Model (`dm-page`)
+
+При создании/правке посадочных услуг Aspro Max:
+
+1. **Сначала каталог блоков:** `bitrix/templates/aspro_max/design-model/BLOCKS.md`
+2. **Стили:** `bitrix/templates/aspro_max/css/design-model.css`
+3. **Эталоны HTML:** `bitrix/templates/aspro_max/design-model/pages/`
+4. Оборачивать контент в `<div class="dm-page">`. Использовать только классы `dm-*`.
+5. Не копировать сырые классы из HTML-исходников заказчика. Если блока нет в каталоге — добавить `dm-*` в CSS **и** описать в `BLOCKS.md`.
+6. Иконки — SVG stroke в `.dm-ico` / hero `.ico`; без эмодзи.
+7. CTA форм — Aspro `CALLBACK`, не самодельные телефоны/формы.
+8. После правок CSS на staging сбрасывать `bitrix/cache/css/` (иначе отдаётся старый `template_*_v1.css`).
+9. «Задеплой» = commit + push текущей feature-ветки.
+
+Новые блоки со страницы «Сайт-визитка» (обязательно учитывать при выборе):  
+`dm-geo`, `dm-seo-item`, `dm-industry`, `dm-table`, `dm-deliverable`, `dm-team`, `dm-cert`, `dm-proof`, `dm-timeline--sm`, `dm-case-metric`.
