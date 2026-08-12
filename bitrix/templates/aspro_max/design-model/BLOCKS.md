@@ -212,6 +212,32 @@
 
 Метрика центрируется между шапкой и кнопкой (grid `minmax(20px,1fr)`). Для полной статистики по-прежнему `.dm-case-stats`.
 
+### Оффер / тип услуги — `.dm-offer`
+**Когда:** сетка типов продукта (небольшой / средний / B2B…): красная шапка как у портфолио + 3 параметра (срок / цена / конверсия) + CTA.  
+Эталон: блок «Какие интернет-магазины мы разрабатываем» на `internet-magazin`; визуально рядом с `.dm-case` + `.dm-case-metric`.
+
+```html
+<div class="dm-grid dm-grid-2">
+  <div class="dm-offer">
+    <div class="dm-offer-head">
+      <h3>Небольшой магазин</h3>
+      <p>Старт в e-commerce, нишевые товары до 500 SKU</p>
+    </div>
+    <div class="dm-offer-body">
+      <div class="dm-offer-specs">
+        <div class="dm-offer-spec"><b>30-40 дней</b><span>Срок</span></div>
+        <div class="dm-offer-spec"><b>от 120 000 ₽</b><span>Цена</span></div>
+        <div class="dm-offer-spec"><b>2-4%</b><span>Конверсия</span></div>
+      </div>
+      <span class="dm-btn dm-btn-outline"
+        data-event="jqm" data-param-form_id="CALLBACK" data-name="callback">Подробнее</span>
+    </div>
+  </div>
+</div>
+```
+
+Сетка — **2 в ряд** (`dm-grid-2`), чтобы длинные значения (напр. «индивидуально») не вылезали из плиток. Шапка — акцент бренда; «Для чего» в `<p>` шапки. Параметры — компактные плитки как у `.dm-case-stat`.
+
 ---
 
 ## Чеклист новой страницы услуг

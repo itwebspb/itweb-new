@@ -57,6 +57,15 @@
     },
     {
       "kind": "element",
+      "code": "internet-magazin",
+      "section": "sozdanie-saytov",
+      "name": "Создание интернет-магазина",
+      "html": "uslugi-sozdanie-saytov-internet-magazin.html",
+      "meta_title": "Создание интернет-магазина под ключ — от 120 000 ₽ | ITWEB",
+      "meta_description": "Разработка интернет-магазина под ключ. Интеграция с 1С, CRM, платёжными системами. 150+ магазинов на 1С-Битрикс. Рассчитаем стоимость за 1 день!"
+    },
+    {
+      "kind": "element",
       "code": "sayt-vizitka",
       "section": "sozdanie-saytov",
       "name": "Создание сайта-визитки",

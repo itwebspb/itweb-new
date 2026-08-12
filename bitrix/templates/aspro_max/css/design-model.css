@@ -212,6 +212,77 @@
 	color: var(--dm-muted);
 }
 
+/* ---- Offer / тип услуги (как портфолио-карточки, с 3 параметрами) ---- */
+.dm-grid:has(> .dm-offer) { align-items: stretch; }
+/* auto-fit у .dm-grid-2 даёт 3 колонки на широком экране — для офферов фиксируем 2 */
+.dm-grid.dm-grid-2:has(> .dm-offer) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.dm-offer {
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+	height: auto;
+	min-height: 100%;
+	background: #fff;
+	border: 1px solid var(--dm-border);
+	border-radius: var(--dm-radius-lg);
+	overflow: hidden;
+	box-shadow: var(--dm-shadow);
+	transition: transform .25s ease, box-shadow .25s ease;
+}
+.dm-offer:hover { transform: translateY(-5px); box-shadow: var(--dm-shadow-hover); }
+.dm-offer-head {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex: 0 0 auto;
+	min-height: 140px;
+	padding: 24px 24px 20px;
+	color: #fff;
+	background: var(--dm-accent);
+}
+.dm-offer-head h3 { color: #fff; font-size: 20px; margin-bottom: 6px; }
+.dm-offer-head p { margin: 0; font-size: 14px; line-height: 1.45; opacity: .9; }
+.dm-offer-body {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	padding: 22px 24px 26px;
+	min-height: 0;
+}
+.dm-offer-specs {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+	margin-bottom: 20px;
+}
+.dm-offer-spec {
+	text-align: center;
+	padding: 12px 8px;
+	background: var(--dm-bg-alt);
+	border-radius: 10px;
+	min-width: 0;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+.dm-offer-spec b {
+	display: block;
+	font-size: 15px;
+	font-weight: 800;
+	color: var(--dm-accent);
+	line-height: 1.2;
+	letter-spacing: -.02em;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+.dm-offer-spec span {
+	display: block;
+	margin-top: 5px;
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--dm-muted);
+}
+.dm-offer-body > .dm-btn { margin-top: auto; align-self: stretch; }
+
 /* ---- Tariff card (редакции) ---- */
 .dm-tariff { position: relative; background: #fff; border: 1px solid var(--dm-border); border-radius: var(--dm-radius-lg);
 	padding: 34px 26px; box-shadow: var(--dm-shadow); transition: transform .25s ease, box-shadow .25s ease; display: flex; flex-direction: column; }
@@ -624,6 +695,7 @@
 	.dm-table th, .dm-table td { padding: 13px 12px; }
 	.dm-geo-copy { font-size: 16px; }
 	.dm-grid:has(> .dm-industry) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.dm-grid.dm-grid-2:has(> .dm-offer) { grid-template-columns: 1fr; }
 
 	/* Таблица платформ → карточки платформ */
 	.dm-table-wrap { overflow: visible; border: 0; background: transparent; box-shadow: none; }
@@ -695,6 +767,8 @@
 	.dm-hero h1 { font-size: 27px; }
 	.dm-hero .dm-subtitle { font-size: 16px; }
 	.dm-case-stats { grid-template-columns: 1fr 1fr; }
+	.dm-offer-specs { grid-template-columns: 1fr; gap: 8px; }
+	.dm-offer-head { min-height: 0; }
 	.dm-btn { display: block; width: 100%; }
 	.dm-hero-buttons { flex-direction: column; }
 	.dm-geo-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
