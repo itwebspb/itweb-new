@@ -1,0 +1,176 @@
+{
+  "iblock_id": 21,
+  "pages": [
+    {
+      "kind": "element",
+      "code": "sayty-na-1s-bitriks",
+      "section": "sozdanie-saytov",
+      "name": "Сайты на 1С-Битрикс",
+      "html": "uslugi-sozdanie-saytov-1c-bitriks.html",
+      "meta_title": "Создание сайтов на 1С-Битрикс под ключ — Золотой партнёр | ITWEB",
+      "meta_description": "Разработка сайтов на 1С-Битрикс под ключ. Золотой партнёр 1С-Битрикс. 150+ проектов. Интеграция с 1С:Предприятие, CRM. Все редакции. Рассчитаем стоимость!"
+    },
+    {
+      "kind": "element",
+      "code": "b2b-portal",
+      "section": "sozdanie-saytov",
+      "name": "Создание B2B-портала под ключ",
+      "html": "uslugi-sozdanie-saytov-b2b-portal.html",
+      "meta_title": "Создание B2B-портала под ключ — от 150 000 ₽ | ITWEB",
+      "meta_description": "Разработка B2B-порталов и сайтов для оптовых продаж. Личные кабинеты дилеров, интеграция с 1С, ЭДО, оптовые цены. 50+ проектов. От 150 000 ₽. Рассчитаем стоимость!"
+    },
+    {
+      "kind": "element",
+      "code": "promo-sayt",
+      "section": "sozdanie-saytov",
+      "name": "Создание промо-сайта",
+      "html": "uslugi-sozdanie-saytov-promo-sayt.html",
+      "meta_title": "Создание промо-сайта под ключ — от 60 000 ₽ | ITWEB",
+      "meta_description": "Разработка промо-сайта и имиджевого сайта под ключ. Яркий дизайн, анимации, видео-контент. 100+ промо-сайтов. Рассчитаем стоимость за 1 день!"
+    },
+    {
+      "kind": "element",
+      "code": "sayt-katalog",
+      "section": "sozdanie-saytov",
+      "name": "Создание сайта-каталога",
+      "html": "uslugi-sozdanie-saytov-sayt-katalog.html",
+      "meta_title": "Создание сайта-каталога под ключ — от 70 000 ₽ | ITWEB",
+      "meta_description": "Разработка сайта-каталога товаров под ключ. Удобная структура, фильтры, карточки товаров, интеграция с 1С. 100+ каталогов. Рассчитаем стоимость за 1 день!"
+    },
+    {
+      "kind": "element",
+      "code": "sayt-vizitka",
+      "section": "sozdanie-saytov",
+      "name": "Создание сайта-визитки",
+      "html": "uslugi-sozdanie-saytov-sayt-vizitka.html",
+      "meta_title": "Создание сайта-визитки под ключ — от 25 000 ₽ | ITWEB",
+      "meta_description": "Разработка сайта-визитки под ключ. Быстрый запуск за 7 дней. Адаптивный дизайн. Идеально для малого бизнеса. Оставьте заявку!"
+    },
+    {
+      "kind": "element",
+      "code": "sayty-dlya-mediciny",
+      "section": "sozdanie-saytov",
+      "name": "Создание сайтов для медицины под ключ",
+      "html": "uslugi-sozdanie-saytov-sayty-dlya-mediciny.html",
+      "meta_title": "Создание сайтов для медицины под ключ — от 90 000 ₽ | ITWEB",
+      "meta_description": "Разработка сайтов для медицинских клиник, стоматологий, косметологии. Онлайн-запись, личный кабинет пациента, интеграция с МИС. Соответствие 152-ФЗ. От 90 000 ₽. Рассчитаем точную стоимость!"
+    },
+    {
+      "kind": "element",
+      "code": "sayty-dlya-nedvizhimosti",
+      "section": "sozdanie-saytov",
+      "name": "Сайт для недвижимости под ключ",
+      "html": "uslugi-sozdanie-saytov-sayty-dlya-nedvizhimosti.html",
+      "meta_title": "Сайт для агентства недвижимости под ключ — от 95 000 ₽ | ITWEB",
+      "meta_description": "Разработка сайтов для агентств недвижимости, риелторов, застройщиков. Каталог объектов, фильтры, ипотечный калькулятор, интеграция с CRM. 50+ проектов. От 95 000 ₽. Рассчитаем точную стоимость!"
+    },
+    {
+      "kind": "element",
+      "code": "sayty-dlya-obrazovaniya",
+      "section": "sozdanie-saytov",
+      "name": "Сайт для образования под ключ",
+      "html": "uslugi-sozdanie-saytov-sayty-dlya-obrazovaniya.html",
+      "meta_title": "Сайт для образовательного центра под ключ — от 90 000 ₽ | ITWEB",
+      "meta_description": "Разработка сайтов для школ, курсов, образовательных центров, онлайн-школ. Запись на курсы, расписание, личный кабинет студента, интеграция с LMS. 50+ проектов. От 90 000 ₽. Рассчитаем стоимость!"
+    },
+    {
+      "kind": "element",
+      "code": "sayty-dlya-obschepita",
+      "section": "sozdanie-saytov",
+      "name": "Сайт для ресторана и кафе под ключ",
+      "html": "uslugi-sozdanie-saytov-sayty-dlya-obschepita.html",
+      "meta_title": "Сайт для ресторана и кафе под ключ — от 90 000 ₽ | ITWEB",
+      "meta_description": "Разработка сайтов для ресторанов, кафе, баров, служб доставки еды. Онлайн-меню, бронирование столиков, интеграция с iiko и R-Keeper. 50+ проектов в общепите. От 90 000 ₽. Рассчитаем точную стоимость!"
+    },
+    {
+      "kind": "element",
+      "code": "sayty-dlya-stroitelstva",
+      "section": "sozdanie-saytov",
+      "name": "Сайт для строительной компании под ключ",
+      "html": "uslugi-sozdanie-saytov-sayty-dlya-stroitelstva.html",
+      "meta_title": "Сайт для строительной компании под ключ — от 85 000 ₽ | ITWEB",
+      "meta_description": "Разработка сайтов для строительных компаний, застройщиков, подрядчиков. Портфолио объектов, калькулятор стоимости, лицензии СРО. 50+ проектов в строительстве. От 85 000 ₽. Рассчитаем точную стоимость!"
+    },
+    {
+      "kind": "element",
+      "code": "sayty-na-tilda",
+      "section": "sozdanie-saytov",
+      "name": "Создание сайтов на Tilda под ключ",
+      "html": "uslugi-sozdanie-saytov-sayty-na-tilda.html",
+      "meta_title": "Создание сайтов на Tilda под ключ — запуск от 5 дней | ITWEB",
+      "meta_description": "Разработка сайтов на Tilda под ключ. Лендинги, визитки, промо-сайты. Быстрый запуск от 5 дней. Удобный редактор, современный дизайн. От 20 000 ₽. Рассчитаем стоимость за 1 день!"
+    },
+    {
+      "kind": "element",
+      "code": "sayty-na-wordpress",
+      "section": "sozdanie-saytov",
+      "name": "Создание сайтов на WordPress под ключ",
+      "html": "uslugi-sozdanie-saytov-sayty-na-wordpress.html",
+      "meta_title": "Разработка сайтов на WordPress под ключ — от 40 000 ₽ | ITWEB",
+      "meta_description": "Профессиональная разработка сайтов на WordPress. Кастомные темы, WooCommerce, SEO-оптимизация, высокая скорость. От 40 000 ₽. Рассчитаем стоимость за 1 день!"
+    },
+    {
+      "kind": "element",
+      "code": "sozdanie-sayta-s-seo",
+      "section": "sozdanie-saytov",
+      "name": "Создание сайта с SEO-продвижением под ключ",
+      "html": "uslugi-sozdanie-saytov-sozdanie-s-seo.html",
+      "meta_title": "Создание сайта с SEO-продвижением под ключ — от 150 000 ₽ | ITWEB",
+      "meta_description": "Разработка сайта с комплексным SEO-продвижением. Вывод в ТОП Яндекса и Google. Комплексный подход: от создания до первых заявок. От 150 000 ₽. Рассчитаем точную стоимость!"
+    },
+    {
+      "kind": "element",
+      "code": "seo-korporativnogo-sayta",
+      "section": "seo-prodvizhenie",
+      "name": "SEO корпоративного сайта под ключ",
+      "html": "uslugi-seo-prodvizhenie-korporativnyy-sayt.html",
+      "meta_title": "SEO корпоративного сайта под ключ — вывод в ТОП | ITWEB",
+      "meta_description": "SEO-продвижение корпоративных сайтов под ключ. Вывод в ТОП Яндекса и Google за 3-6 месяцев. Оптимизация структуры, контента, экспертных страниц. От 40 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
+      "code": "seo-internet-magazina",
+      "section": "seo-prodvizhenie",
+      "name": "SEO интернет-магазина под ключ",
+      "html": "uslugi-seo-prodvizhenie-internet-magazin.html",
+      "meta_title": "SEO интернет-магазина под ключ в СПб — вывод в ТОП | ITWEB",
+      "meta_description": "SEO-продвижение интернет-магазинов под ключ. Вывод в ТОП Яндекса и Google за 3-6 месяцев. Оптимизация каталога, карточек товаров, фильтров. От 50 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
+      "code": "seo-lendinga",
+      "section": "seo-prodvizhenie",
+      "name": "SEO лендинга под ключ",
+      "html": "uslugi-seo-prodvizhenie-lending.html",
+      "meta_title": "SEO лендинга под ключ — вывод в ТОП | ITWEB",
+      "meta_description": "SEO-продвижение лендингов под ключ. Вывод в ТОП Яндекса и Google за 2-4 месяца. Нишевые запросы, A/B тесты, рост конверсии до 15%. От 30 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
+      "code": "seo-sayta-kataloga",
+      "section": "seo-prodvizhenie",
+      "name": "SEO сайта-каталога под ключ",
+      "html": "uslugi-seo-prodvizhenie-sayt-katalog.html",
+      "meta_title": "SEO сайта-каталога под ключ — вывод в ТОП | ITWEB",
+      "meta_description": "SEO-продвижение сайтов-каталогов под ключ. Вывод в ТОП Яндекса и Google за 3-6 месяцев. Оптимизация категорий, карточек товаров, фильтров. От 40 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "section",
+      "code": "prodvizhenie-sayta",
+      "name": "Продвижение сайта",
+      "parent": null,
+      "html": "uslugi-prodvizhenie-sayta.html",
+      "meta_title": "Продвижение сайтов — SEO и контекстная реклама | ITWEB",
+      "meta_description": "Комплексное продвижение сайтов: SEO-оптимизация и контекстная реклама. Вывод в ТОП, гарантия результата. От 40 000 ₽/мес."
+    },
+    {
+      "kind": "section",
+      "code": "seo-prodvizhenie",
+      "name": "SEO продвижение",
+      "parent": "prodvizhenie-sayta",
+      "html": "uslugi-seo-prodvizhenie.html",
+      "meta_title": "SEO-продвижение сайтов — вывод в ТОП Яндекса и Google | ITWEB",
+      "meta_description": "Профессиональное SEO-продвижение сайтов. Вывод в ТОП-10 Яндекса и Google за 3-6 месяцев. Рост органического трафика и заявок. От 40 000 ₽/мес. Бесплатный аудит."
+    }
+  ]
+}
