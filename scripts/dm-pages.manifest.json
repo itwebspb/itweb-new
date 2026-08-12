@@ -39,6 +39,15 @@
     },
     {
       "kind": "element",
+      "code": "korporativnyy-sayt",
+      "section": "sozdanie-saytov",
+      "name": "Создание корпоративного сайта",
+      "html": "uslugi-sozdanie-saytov-korporativnyy-sayt.html",
+      "meta_title": "Создание корпоративного сайта под ключ — от 80 000 ₽ | ITWEB",
+      "meta_description": "Разработка корпоративного сайта под ключ. Современный дизайн, адаптивная вёрстка, SEO-оптимизация. 200+ корпоративных сайтов уже сделали. Звоните!"
+    },
+    {
+      "kind": "element",
       "code": "sayt-vizitka",
       "section": "sozdanie-saytov",
       "name": "Создание сайта-визитки",
