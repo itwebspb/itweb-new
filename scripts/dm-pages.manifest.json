@@ -48,6 +48,15 @@
     },
     {
       "kind": "element",
+      "code": "lending",
+      "section": "sozdanie-saytov",
+      "name": "Создание лендинга",
+      "html": "uslugi-sozdanie-saytov-lending.html",
+      "meta_title": "Создание лендинга под ключ — от 35 000 ₽ | ITWEB",
+      "meta_description": "Разработка продающего лендинга (Landing Page) под ключ. Высокая конверсия, адаптивный дизайн, интеграция с CRM. 300+ лендингов. Рассчитаем стоимость!"
+    },
+    {
+      "kind": "element",
       "code": "sayt-vizitka",
       "section": "sozdanie-saytov",
       "name": "Создание сайта-визитки",
