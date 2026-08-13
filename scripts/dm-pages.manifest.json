@@ -84,6 +84,15 @@
     },
     {
       "kind": "element",
+      "code": "integraciya-s-1s",
+      "section": "sozdanie-saytov",
+      "name": "Интеграция сайта с 1С",
+      "html": "uslugi-sozdanie-saytov-integraciya-s-1s.html",
+      "meta_title": "Интеграция сайта с 1С под ключ — от 30 000 ₽ | ITWEB",
+      "meta_description": "Профессиональная интеграция сайта с 1С:Предприятие, 1С:УТ, 1С:Розница. Синхронизация товаров, цен, остатков, заказов. Настройка обмена данными. От 30 000 ₽. Рассчитаем стоимость!"
+    },
+    {
+      "kind": "element",
       "code": "sayt-vizitka",
       "section": "sozdanie-saytov",
       "name": "Создание сайта-визитки",
