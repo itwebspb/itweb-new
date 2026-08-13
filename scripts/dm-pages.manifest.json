@@ -219,6 +219,15 @@
     },
     {
       "kind": "section",
+      "code": "sozdanie-saytov",
+      "name": "Создание сайтов",
+      "parent": null,
+      "html": "uslugi-sozdanie-saytov.html",
+      "meta_title": "Создание сайтов под ключ — от 20 000 ₽ | Ай Ти Веб",
+      "meta_description": "Профессиональное создание сайтов под ключ. Работаем на 1С-Битрикс, WordPress, Tilda и др. Интернет-магазины, корпоративные сайты, лендинги. Рассчитаем стоимость за 1 день!"
+    },
+    {
+      "kind": "section",
       "code": "prodvizhenie-sayta",
       "name": "Продвижение сайта",
       "parent": null,
