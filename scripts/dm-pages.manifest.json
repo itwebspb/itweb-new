@@ -66,6 +66,15 @@
     },
     {
       "kind": "element",
+      "code": "web-portal",
+      "section": "sozdanie-saytov",
+      "name": "Разработка веб-порталов",
+      "html": "uslugi-sozdanie-saytov-web-portal.html",
+      "meta_title": "Разработка веб-порталов под ключ — от 300 000 ₽ | ITWEB",
+      "meta_description": "Разработка веб-порталов и онлайн-сервисов под ключ. Личные кабинеты, интеграции с 1С и CRM, высокие нагрузки. 50+ порталов. Рассчитаем стоимость под ваши задачи!"
+    },
+    {
+      "kind": "element",
       "code": "sayt-vizitka",
       "section": "sozdanie-saytov",
       "name": "Создание сайта-визитки",
