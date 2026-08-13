@@ -93,6 +93,15 @@
     },
     {
       "kind": "element",
+      "code": "napolnenie-sayta",
+      "section": "sozdanie-saytov",
+      "name": "Наполнение сайта товарами и контентом",
+      "html": "uslugi-sozdanie-saytov-napolnenie-sayta.html",
+      "meta_title": "Наполнение сайта товарами и контентом — от 15 000 ₽ | ITWEB",
+      "meta_description": "Профессиональное наполнение сайта товарами, описаниями, фото. Парсинг товаров, перенос контента со старых сайтов, SEO-оптимизация карточек. От 15 000 ₽. Рассчитаем стоимость!"
+    },
+    {
+      "kind": "element",
       "code": "sayt-vizitka",
       "section": "sozdanie-saytov",
       "name": "Создание сайта-визитки",
