@@ -75,6 +75,15 @@
     },
     {
       "kind": "element",
+      "code": "redizayn-sayta",
+      "section": "sozdanie-saytov",
+      "name": "Редизайн сайта",
+      "html": "uslugi-sozdanie-saytov-redizayn-sayta.html",
+      "meta_title": "Редизайн сайта под ключ — от 50 000 ₽ | ITWEB",
+      "meta_description": "Профессиональный редизайн сайта с сохранением SEO-позиций. Обновление дизайна, UX, адаптивности. Аудит, миграция контента, 301 редиректы. 100+ проектов. От 50 000 ₽. Рассчитаем стоимость!"
+    },
+    {
+      "kind": "element",
       "code": "sayt-vizitka",
       "section": "sozdanie-saytov",
       "name": "Создание сайта-визитки",
