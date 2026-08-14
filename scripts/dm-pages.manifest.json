@@ -228,6 +228,15 @@
     },
     {
       "kind": "element",
+      "code": "seo-sayta-dlya-stroitelstva",
+      "section": "seo-prodvizhenie",
+      "name": "SEO сайта для строительства под ключ",
+      "html": "uslugi-seo-prodvizhenie-sayt-dlya-stroitelstva.html",
+      "meta_title": "SEO сайта для строительства под ключ — вывод в ТОП | ITWEB",
+      "meta_description": "SEO-продвижение сайтов строительных компаний, застройщиков, подрядчиков под ключ. Локальное SEO, портфолио объектов, калькулятор смет. От 40 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
       "code": "etapy",
       "section": "vnedrenie-bitrix24",
       "name": "Этапы внедрения Битрикс24",
