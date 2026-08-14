@@ -237,6 +237,15 @@
     },
     {
       "kind": "element",
+      "code": "seo-sayta-dlya-nedvizhimosti",
+      "section": "seo-prodvizhenie",
+      "name": "SEO сайта для недвижимости под ключ",
+      "html": "uslugi-seo-prodvizhenie-sayt-dlya-nedvizhimosti.html",
+      "meta_title": "SEO сайта для недвижимости под ключ — вывод в ТОП | ITWEB",
+      "meta_description": "SEO-продвижение сайтов агентств недвижимости, риелторов, застройщиков под ключ. Локальное SEO, каталог объектов, работа с репутацией. От 40 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
       "code": "etapy",
       "section": "vnedrenie-bitrix24",
       "name": "Этапы внедрения Битрикс24",
