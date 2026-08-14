@@ -200,6 +200,30 @@ function upsertElement(
 	return $eid;
 }
 
+function rebuildSectionTree(mysqli $m, int $iblockId): void
+{
+	$r = q($m, "SELECT ID, IBLOCK_SECTION_ID, SORT, ACTIVE FROM b_iblock_section WHERE IBLOCK_ID={$iblockId} ORDER BY SORT ASC, ID ASC");
+	$byParent = [];
+	while ($row = $r->fetch_assoc()) {
+		$pid = $row['IBLOCK_SECTION_ID'] === null || $row['IBLOCK_SECTION_ID'] === '' ? 0 : (int)$row['IBLOCK_SECTION_ID'];
+		$byParent[$pid][] = $row;
+	}
+	$margin = 1;
+	$walk = function (int $parentId, int $depth, bool $parentActive) use (&$walk, &$margin, $byParent, $m): void {
+		foreach ($byParent[$parentId] ?? [] as $row) {
+			$id = (int)$row['ID'];
+			$left = $margin++;
+			$active = ($row['ACTIVE'] === 'Y') && $parentActive;
+			$walk($id, $depth + 1, $active);
+			$right = $margin++;
+			$ga = $active ? 'Y' : 'N';
+			q($m, "UPDATE b_iblock_section SET LEFT_MARGIN={$left}, RIGHT_MARGIN={$right}, DEPTH_LEVEL={$depth}, GLOBAL_ACTIVE='{$ga}' WHERE ID={$id}");
+		}
+	};
+	$walk(0, 1, true);
+	echo "RESORT_OK\n";
+}
+
 // Process sections first (parents before children), then elements
 $pages = $manifest['pages'];
 if ($onlyCode !== '') {
@@ -271,9 +295,10 @@ try {
 			$p['meta_description'] ?? null
 		);
 	}
+	echo "OK\n";
 } catch (Throwable $e) {
 	fwrite(STDERR, 'ERROR: ' . $e->getMessage() . "\n");
 	exit(1);
 }
 
-echo "OK\n";
+rebuildSectionTree($m, $iblockId);
