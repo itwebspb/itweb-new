@@ -246,6 +246,15 @@
     },
     {
       "kind": "element",
+      "code": "seo-dlya-b2b",
+      "section": "seo-prodvizhenie",
+      "name": "SEO для B2B под ключ",
+      "html": "uslugi-seo-prodvizhenie-dlya-b2b.html",
+      "meta_title": "SEO для B2B под ключ — продвижение B2B-сайтов | ITWEB",
+      "meta_description": "SEO-продвижение B2B-сайтов, корпоративных порталов, оптовых компаний под ключ. Контент-маркетинг, экспертные статьи, работа с длинными сделками. От 40 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
       "code": "etapy",
       "section": "vnedrenie-bitrix24",
       "name": "Этапы внедрения Битрикс24",
