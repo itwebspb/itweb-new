@@ -255,6 +255,15 @@
     },
     {
       "kind": "element",
+      "code": "seo-dlya-obrazovaniya",
+      "section": "seo-prodvizhenie",
+      "name": "SEO для образования под ключ",
+      "html": "uslugi-seo-prodvizhenie-dlya-obrazovaniya.html",
+      "meta_title": "SEO для образования под ключ — продвижение школ и курсов | ITWEB",
+      "meta_description": "SEO-продвижение сайтов школ, курсов, онлайн-школ, образовательных центров под ключ. Локальное SEO, страницы курсов и преподавателей, работа с отзывами. От 40 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
       "code": "etapy",
       "section": "vnedrenie-bitrix24",
       "name": "Этапы внедрения Битрикс24",
