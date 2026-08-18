@@ -264,6 +264,15 @@
     },
     {
       "kind": "element",
+      "code": "seo-dlya-obshchepita",
+      "section": "seo-prodvizhenie",
+      "name": "SEO для общепита под ключ",
+      "html": "uslugi-seo-prodvizhenie-dlya-obshchepita.html",
+      "meta_title": "SEO для общепита под ключ — продвижение ресторанов и кафе | ITWEB",
+      "meta_description": "SEO-продвижение сайтов ресторанов, кафе, баров, служб доставки под ключ. Локальное SEO, Яндекс.Карты, работа с отзывами, меню. От 40 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
       "code": "etapy",
       "section": "vnedrenie-bitrix24",
       "name": "Этапы внедрения Битрикс24",
