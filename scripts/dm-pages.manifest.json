@@ -273,6 +273,15 @@
     },
     {
       "kind": "element",
+      "code": "audit-sayta",
+      "section": "dopolnitelno",
+      "name": "Аудит сайта под ключ",
+      "html": "uslugi-seo-prodvizhenie-audit-sayta.html",
+      "meta_title": "Аудит сайта — технический и SEO-аудит с отчётом | ITWEB",
+      "meta_description": "Комплексный аудит сайта: технический, SEO, юзабилити, контент, ссылочный профиль. Подробный отчёт. От 15 000 ₽. Бесплатная консультация по результатам."
+    },
+    {
+      "kind": "element",
       "code": "etapy",
       "section": "vnedrenie-bitrix24",
       "name": "Этапы внедрения Битрикс24",
