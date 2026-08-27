@@ -291,6 +291,15 @@
     },
     {
       "kind": "element",
+      "code": "serm",
+      "section": "dopolnitelno",
+      "name": "SERM — управление репутацией под ключ",
+      "html": "uslugi-seo-prodvizhenie-serm.html",
+      "meta_title": "SERM — управление репутацией в интернете | ITWEB",
+      "meta_description": "SERM под ключ: мониторинг упоминаний, работа с отзывами, вытеснение негатива из выдачи Яндекса. Яндекс.Карты, 2ГИС, отзовики. От 30 000 ₽/мес. Бесплатный аудит репутации."
+    },
+    {
+      "kind": "element",
       "code": "rsya",
       "section": "kontekst",
       "name": "Настройка РСЯ под ключ",
