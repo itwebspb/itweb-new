@@ -300,6 +300,15 @@
     },
     {
       "kind": "element",
+      "code": "yandeks-direkt",
+      "section": "kontekst",
+      "name": "Настройка Яндекс.Директ под ключ",
+      "html": "uslugi-kontekst-yandeks-direkt.html",
+      "meta_title": "Настройка Яндекс.Директ под ключ — цена от 25 000 ₽ | ITWEB",
+      "meta_description": "Настройка и ведение Яндекс.Директ под ключ: поиск, РСЯ, ретаргетинг. Чистая семантика, минус-слова, A/B тесты объявлений. Первые заявки за 7 дней, цена лида −30-40%. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
       "code": "etapy",
       "section": "vnedrenie-bitrix24",
       "name": "Этапы внедрения Битрикс24",
