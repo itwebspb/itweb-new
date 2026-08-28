@@ -327,6 +327,15 @@
     },
     {
       "kind": "element",
+      "code": "retargeting",
+      "section": "kontekst",
+      "name": "Настройка ретаргетинга под ключ",
+      "html": "uslugi-kontekst-retargeting.html",
+      "meta_title": "Настройка ретаргетинга под ключ | ITWEB",
+      "meta_description": "Настройка ретаргетинга под ключ в Яндекс.Директ. Возвращаем до 20% клиентов, которые ушли без заявки. Сегменты по поведению, динамический ретаргетинг. От 15 000 ₽."
+    },
+    {
+      "kind": "element",
       "code": "etapy",
       "section": "vnedrenie-bitrix24",
       "name": "Этапы внедрения Битрикс24",
