@@ -2071,3 +2071,4 @@ node_modules/
 
 # robots.txt — явное включение (перекрывает *.txt из секции B2)
 !/robots.txt
+__pycache__/
