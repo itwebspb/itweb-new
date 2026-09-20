@@ -789,3 +789,8 @@
 	.dm-geo-media { min-height: 0; padding: 0; }
 	.dm-deliverable { padding: 20px 18px; gap: 14px; }
 }
+
+/* 320px viewport: .dm-container leaves 280px, below dm-grid-3's 300px minimum. */
+@media (max-width: 359px) {
+	.dm-page .dm-grid-3 { grid-template-columns: minmax(0, 1fr); }
+}
