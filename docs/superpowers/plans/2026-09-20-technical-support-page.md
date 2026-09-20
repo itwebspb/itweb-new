@@ -28,7 +28,7 @@
 - Consumes: `scripts/dm-pages.manifest.json` и будущий HTML-источник.
 - Produces: повторяемую проверку структуры, контента и запретных конструкций.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 Создать `unittest`, который:
 
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     unittest.main()
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run:
 
@@ -85,7 +85,7 @@ python3 -m unittest scripts.tests.test_technical_support_page -v
 
 Expected: ERROR `FileNotFoundError` for `uslugi-podderzhka-tekhnicheskaya.html`.
 
-- [ ] **Step 3: Commit the red test**
+- [x] **Step 3: Commit the red test**
 
 ```bash
 git add scripts/tests/test_technical_support_page.py
@@ -105,7 +105,7 @@ git commit -m "Add technical support page contract test"
 - Consumes: existing `.dm-*` classes and `CALLBACK` data attributes.
 - Produces: manifest code `tekhnicheskaya` and its complete `DETAIL_TEXT` source.
 
-- [ ] **Step 1: Add the manifest entry**
+- [x] **Step 1: Add the manifest entry**
 
 Перед section-объектом `podderzhka` добавить:
 
@@ -121,7 +121,7 @@ git commit -m "Add technical support page contract test"
 }
 ```
 
-- [ ] **Step 2: Implement the page with existing components**
+- [x] **Step 2: Implement the page with existing components**
 
 Создать один `<div class="dm-page">` со следующей точной структурой:
 
@@ -151,7 +151,7 @@ git commit -m "Add technical support page contract test"
 	data-event="jqm" data-param-form_id="CALLBACK" data-name="callback">...</button>
 ```
 
-- [ ] **Step 3: Run contract test**
+- [x] **Step 3: Run contract test**
 
 Run:
 
@@ -161,7 +161,7 @@ python3 -m unittest scripts.tests.test_technical_support_page -v
 
 Expected: `Ran 4 tests` and `OK`.
 
-- [ ] **Step 4: Validate manifest and forbidden constructs**
+- [x] **Step 4: Validate manifest and forbidden constructs**
 
 Run:
 
@@ -173,7 +173,7 @@ rg -n '<(style|script|form)\\b|[\x{1F300}-\x{1FAFF}]' \
 
 Expected: JSON command exits 0; `rg` exits 1 with no matches.
 
-- [ ] **Step 5: Commit implementation**
+- [x] **Step 5: Commit implementation**
 
 ```bash
 git add scripts/dm-pages.manifest.json \
@@ -194,11 +194,11 @@ git push -u origin cursor/technical-support-page-e540
 - Consumes: runtime secret `ITWEB_NEW_SSH_KEY`, `scripts/setup-ssh.sh`, `scripts/dm-sync-page.sh`.
 - Produces: live Bitrix element and a verification log.
 
-- [ ] **Step 1: Configure SSH without exposing the secret**
+- [x] **Step 1: Configure SSH without exposing the secret**
 
 Run `scripts/setup-ssh.sh`; if absent from the feature branch, restore the trusted version temporarily from commit `08a7792`, execute it, and remove the temporary file.
 
-- [ ] **Step 2: Sync only the new element and shared CSS**
+- [x] **Step 2: Sync only the new element and shared CSS**
 
 Run:
 
@@ -209,7 +209,7 @@ DM_REMOTE_SSH=itweb-new-test \
 
 Expected: `ELEMENT_CREATED` or `ELEMENT_UPDATED`, then `OK` and `REMOTE done`.
 
-- [ ] **Step 3: Verify the public URL**
+- [x] **Step 3: Verify the public URL**
 
 Fetch `https://itweb-new.acrobat.test-itweb.ru/services/podderzhka/tekhnicheskaya/` and assert:
 
@@ -222,7 +222,7 @@ Fetch `https://itweb-new.acrobat.test-itweb.ru/services/podderzhka/tekhnicheskay
 
 Write all PASS/FAIL lines to `/opt/cursor/artifacts/technical-support-page-verification.log`.
 
-- [ ] **Step 4: Final repository check**
+- [x] **Step 4: Final repository check**
 
 Run:
 
