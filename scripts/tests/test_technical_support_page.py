@@ -23,7 +23,7 @@ class TechnicalSupportPageTest(unittest.TestCase):
     def test_uses_design_model_contract(self):
         self.assertTrue(self.html.startswith('<div class="dm-page">'))
         self.assertIn("<h1>Техническая поддержка сайта под ключ</h1>", self.html)
-        self.assertNotRegex(self.html, r"<(?:style|script|form)\\b")
+        self.assertNotRegex(self.html, r"<(?:style|script|form)\b")
         self.assertNotRegex(self.html, r"[\U0001F300-\U0001FAFF]")
 
     def test_has_required_sections_and_callbacks(self):
