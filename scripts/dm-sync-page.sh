@@ -17,6 +17,8 @@ UPSERT_PHP="$SCRIPT_DIR/dm-sync-upsert.php"
 PAGES_SRC="$REPO_ROOT/bitrix/templates/aspro_max/design-model/pages"
 CSS_SRC="$REPO_ROOT/bitrix/templates/aspro_max/css/design-model.css"
 IMAGES_SRC="$REPO_ROOT/bitrix/templates/aspro_max/design-model/images"
+HELPER_SRC="$REPO_ROOT/bitrix/templates/aspro_max/design-model/dm-html.php"
+MODIFIER_SRC="$REPO_ROOT/bitrix/templates/aspro_max/components/bitrix/news.detail/news/result_modifier.php"
 
 LOCAL_DOCROOT="${DM_LOCAL_DOCROOT:-/Users/viktorgromov/itweb-new}"
 LOCAL_PHP_CONTAINER="${DM_LOCAL_PHP_CONTAINER:-itweb-new-php-1}"
@@ -76,6 +78,13 @@ print(next(p['html'] for p in m['pages'] if p['code']==c))" "$MANIFEST" "$CODE")
   if [[ "$DO_CSS" -eq 1 ]]; then
     cp -f "$CSS_SRC" "$LOCAL_DOCROOT/bitrix/templates/aspro_max/css/design-model.css"
   fi
+  if [[ -f "$HELPER_SRC" ]]; then
+    cp -f "$HELPER_SRC" "$LOCAL_DOCROOT/bitrix/templates/aspro_max/design-model/dm-html.php"
+  fi
+  if [[ -f "$MODIFIER_SRC" ]]; then
+    mkdir -p "$LOCAL_DOCROOT/bitrix/templates/aspro_max/components/bitrix/news.detail/news"
+    cp -f "$MODIFIER_SRC" "$LOCAL_DOCROOT/bitrix/templates/aspro_max/components/bitrix/news.detail/news/result_modifier.php"
+  fi
 }
 
 sync_db_local() {
@@ -128,6 +137,13 @@ print(next(p['html'] for p in m['pages'] if p['code']==c))" "$MANIFEST" "$CODE")
   fi
   if [[ "$DO_CSS" -eq 1 ]]; then
     scp -o BatchMode=yes "$CSS_SRC" "$REMOTE_SSH:$REMOTE_DOCROOT/bitrix/templates/aspro_max/css/design-model.css"
+  fi
+  if [[ -f "$HELPER_SRC" ]]; then
+    scp -o BatchMode=yes "$HELPER_SRC" "$REMOTE_SSH:$REMOTE_DOCROOT/bitrix/templates/aspro_max/design-model/dm-html.php"
+  fi
+  if [[ -f "$MODIFIER_SRC" ]]; then
+    ssh -o BatchMode=yes "$REMOTE_SSH" "mkdir -p '$REMOTE_DOCROOT/bitrix/templates/aspro_max/components/bitrix/news.detail/news'"
+    scp -o BatchMode=yes "$MODIFIER_SRC" "$REMOTE_SSH:$REMOTE_DOCROOT/bitrix/templates/aspro_max/components/bitrix/news.detail/news/result_modifier.php"
   fi
   scp -o BatchMode=yes "$UPSERT_PHP" "$MANIFEST" "$REMOTE_SSH:$REMOTE_DOCROOT/.dm-sync-tmp/"
 }
