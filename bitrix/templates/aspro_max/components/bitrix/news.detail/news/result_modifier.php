@@ -3,6 +3,25 @@ use \Bitrix\Currency,
 	\Bitrix\Catalog;
 use Bitrix\Main\Type\Collection;
 
+$dmTemplatePath = defined('SITE_TEMPLATE_PATH') && SITE_TEMPLATE_PATH
+	? SITE_TEMPLATE_PATH
+	: '/bitrix/templates/aspro_max';
+$dmHtmlHelper = $_SERVER['DOCUMENT_ROOT'].$dmTemplatePath.'/design-model/dm-html.php';
+if (is_file($dmHtmlHelper)) {
+	require_once $dmHtmlHelper;
+	$dmPagesDir = $_SERVER['DOCUMENT_ROOT'].$dmTemplatePath.'/design-model/pages';
+	$dmDetail = (string)($arResult['~DETAIL_TEXT'] ?? $arResult['FIELDS']['DETAIL_TEXT'] ?? $arResult['DETAIL_TEXT'] ?? '');
+	$dmCode = (string)($arResult['CODE'] ?? '');
+	$dmRestored = dm_restore_detail_html($dmDetail, $dmCode, $dmPagesDir);
+	if ($dmRestored !== $dmDetail) {
+		$arResult['DETAIL_TEXT'] = $dmRestored;
+		$arResult['~DETAIL_TEXT'] = $dmRestored;
+		if (isset($arResult['FIELDS']) && is_array($arResult['FIELDS'])) {
+			$arResult['FIELDS']['DETAIL_TEXT'] = $dmRestored;
+		}
+	}
+}
+
 CMax::getFieldImageData($arResult, array('DETAIL_PICTURE'));
 
 /*landings*/
