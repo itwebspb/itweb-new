@@ -203,6 +203,18 @@ class AiSearchPagesTest(unittest.TestCase):
                 self.assertIn('class="dm-ico"', html)
                 self.assertIn('class="ico"', html)
 
+    def test_geo_term_note_is_one_composition(self):
+        scope_start = self.geo.find('id="dm-scope"')
+        grid_start = self.geo.find('class="dm-grid dm-grid-3"', scope_start)
+        scope = self.geo[scope_start:grid_start]
+        self.assertIn("dm-feature--note", scope)
+        self.assertIn("Уточнение по термину", scope)
+        self.assertIn("генерируемые ответы ИИ", scope)
+        self.assertIn('class="dm-ico"', scope)
+        self.assertNotIn("dm-card", scope)
+        self.assertNotIn("dm-lead", scope)
+        self.assertIn(".dm-feature--note", self.css)
+
     def test_mobile_grid_override_exists(self):
         self.assertIn(".dm-page .dm-grid-3 { grid-template-columns: minmax(0, 1fr); }", self.css)
         self.assertIn(".dm-table.dm-table--4", self.css)
