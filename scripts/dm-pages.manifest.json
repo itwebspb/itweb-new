@@ -426,26 +426,17 @@
     },
     {
       "kind": "section",
-      "code": "prodvizhenie",
-      "name": "Продвижение",
-      "parent": null,
-      "html": "uslugi-prodvizhenie-ai.html",
-      "meta_title": "Продвижение в ИИ-поиске (GEO и AEO) — видимость бренда в нейросетях | Ай Ти Веб",
-      "meta_description": "Продвижение в ИИ-поиске под ключ: GEO (Generative Engine Optimization) и AEO (Answer Engine Optimization). Выводим бренд в ответы ChatGPT, Perplexity, Gemini, Алиса и поисковых сниппетов. От 35 000 ₽/мес. Аудит видимости в ИИ."
-    },
-    {
-      "kind": "section",
-      "code": "ai",
+      "code": "prodvizhenie-v-ai-poiske",
       "name": "Продвижение в ИИ-поиске",
-      "parent": "prodvizhenie",
-      "html": "uslugi-prodvizhenie-ai.html",
+      "parent": null,
+      "html": "uslugi-prodvizhenie-v-ai-poiske.html",
       "meta_title": "Продвижение в ИИ-поиске (GEO и AEO) — видимость бренда в нейросетях | Ай Ти Веб",
       "meta_description": "Продвижение в ИИ-поиске под ключ: GEO (Generative Engine Optimization) и AEO (Answer Engine Optimization). Выводим бренд в ответы ChatGPT, Perplexity, Gemini, Алиса и поисковых сниппетов. От 35 000 ₽/мес. Аудит видимости в ИИ."
     },
     {
       "kind": "element",
       "code": "geo",
-      "section": "ai",
+      "section": "prodvizhenie-v-ai-poiske",
       "name": "GEO-продвижение",
       "html": "uslugi-prodvizhenie-ai-geo.html",
       "meta_title": "GEO-продвижение в ИИ-поиске — Generative Engine Optimization | Ай Ти Веб",
@@ -454,7 +445,7 @@
     {
       "kind": "element",
       "code": "aeo",
-      "section": "ai",
+      "section": "prodvizhenie-v-ai-poiske",
       "name": "AEO-продвижение",
       "html": "uslugi-prodvizhenie-ai-aeo.html",
       "meta_title": "AEO-продвижение сайтов — Answer Engine Optimization | Ай Ти Веб",

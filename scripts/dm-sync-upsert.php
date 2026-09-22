@@ -224,81 +224,157 @@ function rebuildSectionTree(mysqli $m, int $iblockId): void
 	echo "RESORT_OK\n";
 }
 
-// Process sections first (parents before children), then elements
-$pages = $manifest['pages'];
-if ($onlyCode !== '') {
-	$pages = array_values(array_filter($pages, static fn($p) => ($p['code'] ?? '') === $onlyCode));
-	if (!$pages) {
-		fwrite(STDERR, "Code not in manifest: {$onlyCode}\n");
+/**
+ * Deactivate leftover stub sections after their elements were moved.
+ * Aborts if a section still has extra children or attached elements.
+ */
+function retireStubSections(mysqli $m, int $iblockId, array $codes): void
+{
+	$codes = array_values(array_filter(array_map('trim', $codes), static fn($c) => $c !== ''));
+	if (!$codes) {
+		return;
+	}
+	$codeSet = array_fill_keys($codes, true);
+	$expected = [
+		'prodvizhenie' => ['name' => 'Продвижение', 'top_level' => true],
+		'ai' => ['name' => 'Продвижение в ИИ-поиске'],
+		'prodvizhenie-v-ii-poiske' => ['name' => 'Продвижение в ИИ-поиске', 'top_level' => true],
+	];
+
+	$ids = [];
+	foreach ($codes as $code) {
+		$id = sectionIdByCode($m, $iblockId, $code);
+		if ($id === null) {
+			echo "RETIRE_SKIP {$code} (missing)\n";
+			continue;
+		}
+		$row = q($m, "SELECT ID, NAME, IBLOCK_SECTION_ID, ACTIVE FROM b_iblock_section WHERE ID={$id} AND IBLOCK_ID={$iblockId} LIMIT 1")->fetch_assoc();
+		if (!$row) {
+			echo "RETIRE_SKIP {$code} (missing)\n";
+			continue;
+		}
+		$rules = $expected[$code] ?? null;
+		if ($rules) {
+			if (($rules['name'] ?? '') !== '' && $row['NAME'] !== $rules['name']) {
+				throw new RuntimeException("Refuse to retire '{$code}': unexpected name '{$row['NAME']}'");
+			}
+			$parentEmpty = $row['IBLOCK_SECTION_ID'] === null || $row['IBLOCK_SECTION_ID'] === '' || (int)$row['IBLOCK_SECTION_ID'] === 0;
+			if (!empty($rules['top_level']) && !$parentEmpty) {
+				throw new RuntimeException("Refuse to retire '{$code}': not a top-level section");
+			}
+		}
+		$ids[$code] = $id;
+	}
+
+	foreach ($ids as $code => $id) {
+		$r = q($m, "SELECT ID, CODE FROM b_iblock_section WHERE IBLOCK_ID={$iblockId} AND IBLOCK_SECTION_ID={$id}");
+		while ($row = $r->fetch_assoc()) {
+			if (!isset($codeSet[$row['CODE']])) {
+				throw new RuntimeException("Refuse to retire '{$code}': extra child section '{$row['CODE']}'");
+			}
+		}
+		$r = q($m, "SELECT e.ID, e.CODE FROM b_iblock_section_element se JOIN b_iblock_element e ON e.ID=se.IBLOCK_ELEMENT_ID WHERE se.IBLOCK_SECTION_ID={$id}");
+		while ($row = $r->fetch_assoc()) {
+			throw new RuntimeException("Refuse to retire '{$code}': still has element '{$row['CODE']}'#{$row['ID']}");
+		}
+	}
+
+	$now = date('Y-m-d H:i:s');
+	foreach ($ids as $code => $id) {
+		q($m, "UPDATE b_iblock_section SET ACTIVE='N', GLOBAL_ACTIVE='N', TIMESTAMP_X='{$now}' WHERE ID={$id} AND IBLOCK_ID={$iblockId}");
+		echo "SECTION_RETIRED {$code}#{$id}\n";
+	}
+}
+
+$retireOnly = getenv('DM_RETIRE_ONLY') === '1';
+$retireCodes = array_values(array_filter(array_map('trim', explode(',', getenv('DM_RETIRE_CODES') ?: '')), static fn($c) => $c !== ''));
+
+if (!$retireOnly) {
+	// Process sections first (parents before children), then elements
+	$pages = $manifest['pages'];
+	if ($onlyCode !== '') {
+		$pages = array_values(array_filter($pages, static fn($p) => ($p['code'] ?? '') === $onlyCode));
+		if (!$pages) {
+			fwrite(STDERR, "Code not in manifest: {$onlyCode}\n");
+			exit(1);
+		}
+	}
+
+	$sections = array_values(array_filter($pages, static fn($p) => ($p['kind'] ?? '') === 'section'));
+	$elements = array_values(array_filter($pages, static fn($p) => ($p['kind'] ?? 'element') === 'element'));
+
+	// parents (no parent) first
+	usort($sections, static function ($a, $b) {
+		$ap = $a['parent'] ?? null;
+		$bp = $b['parent'] ?? null;
+		if ($ap === $bp) {
+			return 0;
+		}
+		if ($ap === null) {
+			return -1;
+		}
+		if ($bp === null) {
+			return 1;
+		}
+		return 0;
+	});
+
+	try {
+		foreach ($sections as $p) {
+			$htmlFile = $pagesDir . '/' . $p['html'];
+			if (!is_file($htmlFile)) {
+				throw new RuntimeException("Missing HTML: {$htmlFile}");
+			}
+			$html = file_get_contents($htmlFile);
+			if ($html === false || strpos($html, 'dm-page') === false) {
+				throw new RuntimeException("Bad HTML (no dm-page): {$htmlFile}");
+			}
+			ensureSection(
+				$m,
+				$iblockId,
+				$p['code'],
+				$p['name'],
+				$p['parent'] ?? null,
+				$html,
+				$p['meta_title'] ?? null,
+				$p['meta_description'] ?? null
+			);
+		}
+
+		foreach ($elements as $p) {
+			$htmlFile = $pagesDir . '/' . $p['html'];
+			if (!is_file($htmlFile)) {
+				throw new RuntimeException("Missing HTML: {$htmlFile}");
+			}
+			$html = file_get_contents($htmlFile);
+			if ($html === false || strpos($html, 'dm-page') === false) {
+				throw new RuntimeException("Bad HTML (no dm-page): {$htmlFile}");
+			}
+			upsertElement(
+				$m,
+				$iblockId,
+				$p['code'],
+				$p['section'],
+				$p['name'],
+				$html,
+				$p['meta_title'] ?? null,
+				$p['meta_description'] ?? null
+			);
+		}
+		echo "OK\n";
+	} catch (Throwable $e) {
+		fwrite(STDERR, 'ERROR: ' . $e->getMessage() . "\n");
 		exit(1);
 	}
 }
 
-$sections = array_values(array_filter($pages, static fn($p) => ($p['kind'] ?? '') === 'section'));
-$elements = array_values(array_filter($pages, static fn($p) => ($p['kind'] ?? 'element') === 'element'));
-
-// parents (no parent) first
-usort($sections, static function ($a, $b) {
-	$ap = $a['parent'] ?? null;
-	$bp = $b['parent'] ?? null;
-	if ($ap === $bp) {
-		return 0;
+if ($retireCodes) {
+	try {
+		retireStubSections($m, $iblockId, $retireCodes);
+	} catch (Throwable $e) {
+		fwrite(STDERR, 'ERROR: ' . $e->getMessage() . "\n");
+		exit(1);
 	}
-	if ($ap === null) {
-		return -1;
-	}
-	if ($bp === null) {
-		return 1;
-	}
-	return 0;
-});
-
-try {
-	foreach ($sections as $p) {
-		$htmlFile = $pagesDir . '/' . $p['html'];
-		if (!is_file($htmlFile)) {
-			throw new RuntimeException("Missing HTML: {$htmlFile}");
-		}
-		$html = file_get_contents($htmlFile);
-		if ($html === false || strpos($html, 'dm-page') === false) {
-			throw new RuntimeException("Bad HTML (no dm-page): {$htmlFile}");
-		}
-		ensureSection(
-			$m,
-			$iblockId,
-			$p['code'],
-			$p['name'],
-			$p['parent'] ?? null,
-			$html,
-			$p['meta_title'] ?? null,
-			$p['meta_description'] ?? null
-		);
-	}
-
-	foreach ($elements as $p) {
-		$htmlFile = $pagesDir . '/' . $p['html'];
-		if (!is_file($htmlFile)) {
-			throw new RuntimeException("Missing HTML: {$htmlFile}");
-		}
-		$html = file_get_contents($htmlFile);
-		if ($html === false || strpos($html, 'dm-page') === false) {
-			throw new RuntimeException("Bad HTML (no dm-page): {$htmlFile}");
-		}
-		upsertElement(
-			$m,
-			$iblockId,
-			$p['code'],
-			$p['section'],
-			$p['name'],
-			$html,
-			$p['meta_title'] ?? null,
-			$p['meta_description'] ?? null
-		);
-	}
-	echo "OK\n";
-} catch (Throwable $e) {
-	fwrite(STDERR, 'ERROR: ' . $e->getMessage() . "\n");
-	exit(1);
 }
 
 rebuildSectionTree($m, $iblockId);
