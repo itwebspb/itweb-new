@@ -167,6 +167,9 @@ class AiSearchPagesTest(unittest.TestCase):
     def test_url_contract_and_existing_links(self):
         self.assertIn('"section" => "#SECTION_CODE_PATH#/"', self.sef)
         self.assertIn('"detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/"', self.sef)
+        self.assertIn("/services/prodvizhenie-v-ai-poiske/", self.sef)
+        self.assertIn("LocalRedirect", self.sef)
+        self.assertIn("/services/prodvizhenie/ai/", self.sef)
         self.assertIn('href="/services/prodvizhenie-v-ai-poiske/geo/"', self.section)
         self.assertIn('href="/services/prodvizhenie-v-ai-poiske/aeo/"', self.section)
         self.assertNotIn("/services/prodvizhenie-v-ai-poiske/geo//", self.section)
