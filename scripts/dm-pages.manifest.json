@@ -430,8 +430,8 @@
       "name": "Продвижение",
       "parent": null,
       "html": "uslugi-prodvizhenie-ai.html",
-      "meta_title": "Продвижение в ИИ-поиске — GEO и AEO под ключ | Ай Ти Веб",
-      "meta_description": "Продвижение в ИИ-поиске: GEO-цитирование в ChatGPT и Perplexity, AEO-сниппеты и AI Overviews. Белые методы, связка с SEO. От 40 000 ₽/мес. Бесплатный аудит видимости в ИИ."
+      "meta_title": "Продвижение в ИИ-поиске (GEO и AEO) — видимость бренда в нейросетях | Ай Ти Веб",
+      "meta_description": "Продвижение в ИИ-поиске под ключ: GEO (Generative Engine Optimization) и AEO (Answer Engine Optimization). Выводим бренд в ответы ChatGPT, Perplexity, Gemini, Алиса и поисковых сниппетов. От 35 000 ₽/мес. Аудит видимости в ИИ."
     },
     {
       "kind": "section",
@@ -439,8 +439,8 @@
       "name": "Продвижение в ИИ-поиске",
       "parent": "prodvizhenie",
       "html": "uslugi-prodvizhenie-ai.html",
-      "meta_title": "Продвижение в ИИ-поиске — GEO и AEO под ключ | Ай Ти Веб",
-      "meta_description": "Продвижение в ИИ-поиске: GEO-цитирование в ChatGPT и Perplexity, AEO-сниппеты и AI Overviews. Белые методы, связка с SEO. От 40 000 ₽/мес. Бесплатный аудит видимости в ИИ."
+      "meta_title": "Продвижение в ИИ-поиске (GEO и AEO) — видимость бренда в нейросетях | Ай Ти Веб",
+      "meta_description": "Продвижение в ИИ-поиске под ключ: GEO (Generative Engine Optimization) и AEO (Answer Engine Optimization). Выводим бренд в ответы ChatGPT, Perplexity, Gemini, Алиса и поисковых сниппетов. От 35 000 ₽/мес. Аудит видимости в ИИ."
     },
     {
       "kind": "element",
@@ -448,8 +448,8 @@
       "section": "ai",
       "name": "GEO-продвижение",
       "html": "uslugi-prodvizhenie-ai-geo.html",
-      "meta_title": "GEO-продвижение — цитирование бренда в ChatGPT и Perplexity | Ай Ти Веб",
-      "meta_description": "GEO-продвижение под ключ: цитирование бренда в ChatGPT, Perplexity, Gemini и ЯндексGPT. Сущности, экспертный контент, мониторинг промптов. От 40 000 ₽/мес. Бесплатный аудит."
+      "meta_title": "GEO-продвижение в ИИ-поиске — Generative Engine Optimization | Ай Ти Веб",
+      "meta_description": "GEO-продвижение (Generative Engine Optimization) под ключ: выводим бренд в ответы ChatGPT, Perplexity, Gemini и Алисы. Entity-профиль, контент под извлечение ИИ, мониторинг цитируемости. От 35 000 ₽/мес. Аудит ИИ-видимости."
     },
     {
       "kind": "element",
@@ -457,8 +457,8 @@
       "section": "ai",
       "name": "AEO-продвижение",
       "html": "uslugi-prodvizhenie-ai-aeo.html",
-      "meta_title": "AEO-продвижение — сниппеты и AI Overviews под ключ | Ай Ти Веб",
-      "meta_description": "AEO-продвижение под ключ: featured snippets, AI Overviews, FAQ-разметка, голосовые ответы. От 40 000 ₽/мес. Бесплатный аудит сниппетов."
+      "meta_title": "AEO-продвижение сайтов — Answer Engine Optimization | Ай Ти Веб",
+      "meta_description": "AEO-продвижение сайтов под ключ: оптимизация под прямые ответы Яндекса и Google, голосовой поиск, сниппеты и FAQ. Точные ответы, Schema.org, контент под вопросы, мониторинг Position 0. От 30 000 ₽/мес."
     }
   ]
 }

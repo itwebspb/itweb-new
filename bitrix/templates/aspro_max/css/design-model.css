@@ -591,6 +591,12 @@
 .dm-table strong { color: var(--dm-ink); }
 .dm-table-badge { display: inline-block; margin: 4px 0 0 5px; padding: 3px 8px; color: var(--dm-accent-dark);
 	background: var(--dm-accent-soft); border-radius: 999px; font-size: 11px; line-height: 1.4; font-weight: 700; white-space: nowrap; }
+.dm-table.dm-table--4 th:nth-child(1), .dm-table.dm-table--4 td:nth-child(1) { width: 18%; }
+.dm-table.dm-table--4 th:nth-child(2), .dm-table.dm-table--4 td:nth-child(2),
+.dm-table.dm-table--4 th:nth-child(3), .dm-table.dm-table--4 td:nth-child(3),
+.dm-table.dm-table--4 th:nth-child(4), .dm-table.dm-table--4 td:nth-child(4) { width: 27.3%; }
+.dm-page .dm-hero a { color: #fff; font-weight: 700; text-decoration: underline; }
+.dm-page .dm-hero .dm-subtitle + .dm-subtitle { margin-top: -32px; }
 
 /* ---- Visitka: deliverables — список результатов после запуска ---- */
 .dm-deliverable { display: flex; gap: 18px; align-items: flex-start; padding: 24px 22px; background: #fff;
