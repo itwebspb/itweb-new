@@ -89,8 +89,8 @@ class DmIconRestoreTest(unittest.TestCase):
             "kontentnaya": "podderzhka",
             "dorabotka": "podderzhka",
             "tekhnicheskaya": "podderzhka",
-            "geo": "ai",
-            "aeo": "ai",
+            "geo": "prodvizhenie-v-ai-poiske",
+            "aeo": "prodvizhenie-v-ai-poiske",
         }
         for code, filename in SUPPORT_PAGES:
             with self.subTest(code=code):

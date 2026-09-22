@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 PAGES = ROOT / "bitrix/templates/aspro_max/design-model/pages"
-SECTION = PAGES / "uslugi-prodvizhenie-ai.html"
+SECTION = PAGES / "uslugi-prodvizhenie-v-ai-poiske.html"
 GEO = PAGES / "uslugi-prodvizhenie-ai-geo.html"
 AEO = PAGES / "uslugi-prodvizhenie-ai-aeo.html"
 MANIFEST = ROOT / "scripts/dm-pages.manifest.json"
@@ -51,31 +51,30 @@ class AiSearchPagesTest(unittest.TestCase):
     def _entry(self, code: str) -> dict:
         return next(page for page in self.manifest["pages"] if page["code"] == code)
 
-    def test_manifest_registers_nested_hierarchy(self):
-        parent = self._entry("prodvizhenie")
-        section = self._entry("ai")
+    def test_manifest_registers_first_level_section(self):
+        codes = [page["code"] for page in self.manifest["pages"]]
+        self.assertEqual(len(codes), len(set(codes)))
+        self.assertNotIn("prodvizhenie", codes)
+        self.assertNotIn("ai", codes)
+        self.assertNotIn("prodvizhenie-v-ii-poiske", codes)
+        section = self._entry("prodvizhenie-v-ai-poiske")
         geo = self._entry("geo")
         aeo = self._entry("aeo")
-        self.assertEqual(parent["kind"], "section")
-        self.assertIsNone(parent["parent"])
-        self.assertEqual(parent["html"], SECTION.name)
         self.assertEqual(section["kind"], "section")
-        self.assertEqual(section["parent"], "prodvizhenie")
+        self.assertIsNone(section["parent"])
         self.assertEqual(section["html"], SECTION.name)
         self.assertEqual(section["name"], "Продвижение в ИИ-поиске")
         self.assertIn("35 000", section["meta_description"])
         self.assertEqual(geo["kind"], "element")
-        self.assertEqual(geo["section"], "ai")
+        self.assertEqual(geo["section"], "prodvizhenie-v-ai-poiske")
         self.assertEqual(geo["html"], GEO.name)
         self.assertIn("geo", geo["meta_description"].lower())
         self.assertIn("35 000", geo["meta_description"])
         self.assertEqual(aeo["kind"], "element")
-        self.assertEqual(aeo["section"], "ai")
+        self.assertEqual(aeo["section"], "prodvizhenie-v-ai-poiske")
         self.assertEqual(aeo["html"], AEO.name)
         self.assertIn("aeo", aeo["meta_description"].lower())
         self.assertIn("30 000", aeo["meta_description"])
-        codes = [page["code"] for page in self.manifest["pages"]]
-        self.assertEqual(len(codes), len(set(codes)))
 
     def test_uses_design_model_contract(self):
         for html, h1, classes, sections in (
@@ -168,18 +167,21 @@ class AiSearchPagesTest(unittest.TestCase):
     def test_url_contract_and_existing_links(self):
         self.assertIn('"section" => "#SECTION_CODE_PATH#/"', self.sef)
         self.assertIn('"detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/"', self.sef)
-        self.assertIn('href="/services/prodvizhenie/ai/geo/"', self.section)
-        self.assertIn('href="/services/prodvizhenie/ai/aeo/"', self.section)
-        self.assertNotIn("/services/prodvizhenie/ai/geo//", self.section)
-        self.assertIn('href="/services/prodvizhenie/ai/aeo/"', self.geo)
+        self.assertIn('href="/services/prodvizhenie-v-ai-poiske/geo/"', self.section)
+        self.assertIn('href="/services/prodvizhenie-v-ai-poiske/aeo/"', self.section)
+        self.assertNotIn("/services/prodvizhenie-v-ai-poiske/geo//", self.section)
+        self.assertIn('href="/services/prodvizhenie-v-ai-poiske/aeo/"', self.geo)
         self.assertIn('href="/services/prodvizhenie-sayta/seo-prodvizhenie/"', self.geo)
         self.assertIn('href="/services/dopolnitelno/serm/"', self.geo)
-        self.assertIn('href="/services/prodvizhenie/ai/geo/"', self.aeo)
+        self.assertIn('href="/services/prodvizhenie-v-ai-poiske/geo/"', self.aeo)
         self.assertIn('href="/services/prodvizhenie-sayta/seo-prodvizhenie/"', self.aeo)
         self.assertIn('href="/services/dopolnitelno/audit-sayta/"', self.aeo)
         for html in (self.section, self.geo, self.aeo):
             self.assertNotIn("/uslugi/", html)
             self.assertNotIn("tel:+78001234567", html)
+            self.assertNotIn("/services/prodvizhenie/ai/", html)
+            self.assertNotIn("/services/prodvizhenie-v-ii-poiske/", html)
+            self.assertNotIn('href="/services/prodvizhenie/"', html)
         for html, ids in (
             (self.section, self.section_meta.ids),
             (self.geo, self.geo_meta.ids),
@@ -201,6 +203,16 @@ class AiSearchPagesTest(unittest.TestCase):
     def test_mobile_grid_override_exists(self):
         self.assertIn(".dm-page .dm-grid-3 { grid-template-columns: minmax(0, 1fr); }", self.css)
         self.assertIn(".dm-table.dm-table--4", self.css)
+
+    def test_retire_workflow_is_wired(self):
+        upsert = (ROOT / "scripts/dm-sync-upsert.php").read_text(encoding="utf-8")
+        shell = (ROOT / "scripts/dm-sync-page.sh").read_text(encoding="utf-8")
+        self.assertIn("function retireStubSections", upsert)
+        self.assertIn("Refuse to retire", upsert)
+        self.assertIn("DM_RETIRE_ONLY", upsert)
+        self.assertIn("--retire-codes", shell)
+        self.assertIn("--retire-only", shell)
+        self.assertIn("DM_RETIRE_CODES", shell)
 
 
 if __name__ == "__main__":
