@@ -63,22 +63,25 @@ class AiSearchPagesTest(unittest.TestCase):
         self.assertEqual(section["parent"], "prodvizhenie")
         self.assertEqual(section["html"], SECTION.name)
         self.assertEqual(section["name"], "Продвижение в ИИ-поиске")
+        self.assertIn("35 000", section["meta_description"])
         self.assertEqual(geo["kind"], "element")
         self.assertEqual(geo["section"], "ai")
         self.assertEqual(geo["html"], GEO.name)
         self.assertIn("geo", geo["meta_description"].lower())
+        self.assertIn("35 000", geo["meta_description"])
         self.assertEqual(aeo["kind"], "element")
         self.assertEqual(aeo["section"], "ai")
         self.assertEqual(aeo["html"], AEO.name)
         self.assertIn("aeo", aeo["meta_description"].lower())
+        self.assertIn("30 000", aeo["meta_description"])
         codes = [page["code"] for page in self.manifest["pages"]]
         self.assertEqual(len(codes), len(set(codes)))
 
     def test_uses_design_model_contract(self):
-        for html, h1, classes in (
-            (self.section, "<h1>Продвижение в ИИ-поиске под ключ</h1>", self.section_meta.classes),
-            (self.geo, "<h1>GEO-продвижение под ключ</h1>", self.geo_meta.classes),
-            (self.aeo, "<h1>AEO-продвижение под ключ</h1>", self.aeo_meta.classes),
+        for html, h1, classes, sections in (
+            (self.section, "<h1>Продвижение в ИИ-поиске под ключ</h1>", self.section_meta.classes, 9),
+            (self.geo, "<h1>GEO-продвижение в ИИ-поиске под ключ</h1>", self.geo_meta.classes, 12),
+            (self.aeo, "<h1>AEO-продвижение сайтов под ключ</h1>", self.aeo_meta.classes, 13),
         ):
             with self.subTest(h1=h1):
                 self.assertTrue(html.startswith('<div class="dm-page">'))
@@ -87,7 +90,7 @@ class AiSearchPagesTest(unittest.TestCase):
                 self.assertNotRegex(html, r"<(?:style|script|form)\b")
                 self.assertNotRegex(html, r'style="')
                 self.assertNotRegex(html, r"[\U0001F300-\U0001FAFF]")
-                self.assertEqual(len(re.findall(r"<section\b", html)), 10)
+                self.assertEqual(len(re.findall(r"<section\b", html)), sections)
                 non_dm = [
                     cls
                     for cls in classes
@@ -97,6 +100,12 @@ class AiSearchPagesTest(unittest.TestCase):
 
     def test_has_required_sections_and_callbacks(self):
         self.assertIn('id="dm-directions"', self.section)
+        self.assertIn('id="dm-tariffs"', self.section)
+        self.assertIn('id="dm-steps"', self.section)
+        self.assertIn('id="dm-form"', self.section)
+        self.assertIn("Готовы стать заметными в эпоху ИИ?", self.section)
+        self.assertNotIn('id="dm-cases"', self.section)
+        self.assertNotIn("class=\"dm-tool\"", self.section)
         for html, ids in (
             (self.geo, self.geo_meta.ids),
             (self.aeo, self.aeo_meta.ids),
@@ -118,9 +127,33 @@ class AiSearchPagesTest(unittest.TestCase):
         self.assertEqual(len(self.section_meta.ids), len(set(self.section_meta.ids)))
         self.assertGreaterEqual(
             len(re.findall(r'<button type="button"[^>]*data-param-form_id="CALLBACK"', self.section)),
-            8,
+            7,
         )
         self.assertNotIn('<span class="dm-btn', self.section)
+
+    def test_source_copy_and_tariffs(self):
+        self.assertIn("AEO Старт", self.section)
+        self.assertIn("GEO + AEO Комплекс", self.section)
+        self.assertIn("GEO Enterprise", self.section)
+        self.assertIn("от 35 000 ₽/мес", self.section)
+        self.assertIn("от 70 000 ₽/мес", self.section)
+        self.assertIn("от 120 000 ₽/мес", self.section)
+        self.assertIn("Рекомендуемый", self.section)
+        self.assertIn("GEO Старт", self.geo)
+        self.assertIn("GEO Комплекс", self.geo)
+        self.assertIn("GEO Индивидуальный", self.geo)
+        self.assertIn("0% → 38%", self.geo)
+        self.assertIn("Generative Engine Optimization", self.geo)
+        self.assertIn("AEO Старт", self.aeo)
+        self.assertIn("AEO + Контент", self.aeo)
+        self.assertIn("AEO Индивидуальный", self.aeo)
+        self.assertIn("от 30 000 ₽/мес", self.aeo)
+        self.assertIn("от 40 000 ₽/мес", self.aeo)
+        self.assertIn("Answer Engine Optimization", self.aeo)
+        self.assertNotIn("</a>.", self.aeo)
+        self.assertIn("class=\"dm-table dm-table--4\"", self.section)
+        self.assertIn("class=\"dm-table dm-table--4\"", self.geo)
+        self.assertIn("class=\"dm-table dm-table--4\"", self.aeo)
 
     def test_has_eight_schema_faq_items(self):
         for html in (self.section, self.geo, self.aeo):
@@ -138,14 +171,15 @@ class AiSearchPagesTest(unittest.TestCase):
         self.assertIn('href="/services/prodvizhenie/ai/geo/"', self.section)
         self.assertIn('href="/services/prodvizhenie/ai/aeo/"', self.section)
         self.assertNotIn("/services/prodvizhenie/ai/geo//", self.section)
-        self.assertIn('href="/services/prodvizhenie/ai/"', self.geo)
         self.assertIn('href="/services/prodvizhenie/ai/aeo/"', self.geo)
-        self.assertIn('href="/services/prodvizhenie/ai/"', self.aeo)
+        self.assertIn('href="/services/prodvizhenie-sayta/seo-prodvizhenie/"', self.geo)
+        self.assertIn('href="/services/dopolnitelno/serm/"', self.geo)
         self.assertIn('href="/services/prodvizhenie/ai/geo/"', self.aeo)
+        self.assertIn('href="/services/prodvizhenie-sayta/seo-prodvizhenie/"', self.aeo)
+        self.assertIn('href="/services/dopolnitelno/audit-sayta/"', self.aeo)
         for html in (self.section, self.geo, self.aeo):
             self.assertNotIn("/uslugi/", html)
-            self.assertIn('href="/services/prodvizhenie-sayta/seo-prodvizhenie/"', html)
-        self.assertIn('href="/services/kontekst/"', self.section)
+            self.assertNotIn("tel:+78001234567", html)
         for html, ids in (
             (self.section, self.section_meta.ids),
             (self.geo, self.geo_meta.ids),
@@ -166,6 +200,7 @@ class AiSearchPagesTest(unittest.TestCase):
 
     def test_mobile_grid_override_exists(self):
         self.assertIn(".dm-page .dm-grid-3 { grid-template-columns: minmax(0, 1fr); }", self.css)
+        self.assertIn(".dm-table.dm-table--4", self.css)
 
 
 if __name__ == "__main__":
