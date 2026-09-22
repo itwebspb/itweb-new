@@ -423,6 +423,42 @@
       "html": "uslugi-kontekst.html",
       "meta_title": "Контекстная реклама под ключ — Яндекс.Директ и Google Реклама | ITWEB",
       "meta_description": "Настройка и ведение контекстной рекламы под ключ: Яндекс.Директ, Google Реклама, РСЯ, ретаргетинг. Первые заявки за 7 дней, снижение стоимости лида на 30-40%. От 25 000 ₽. Бесплатный аудит кампаний."
+    },
+    {
+      "kind": "section",
+      "code": "prodvizhenie",
+      "name": "Продвижение",
+      "parent": null,
+      "html": "uslugi-prodvizhenie-ai.html",
+      "meta_title": "Продвижение в ИИ-поиске — GEO и AEO под ключ | Ай Ти Веб",
+      "meta_description": "Продвижение в ИИ-поиске: GEO-цитирование в ChatGPT и Perplexity, AEO-сниппеты и AI Overviews. Белые методы, связка с SEO. От 40 000 ₽/мес. Бесплатный аудит видимости в ИИ."
+    },
+    {
+      "kind": "section",
+      "code": "ai",
+      "name": "Продвижение в ИИ-поиске",
+      "parent": "prodvizhenie",
+      "html": "uslugi-prodvizhenie-ai.html",
+      "meta_title": "Продвижение в ИИ-поиске — GEO и AEO под ключ | Ай Ти Веб",
+      "meta_description": "Продвижение в ИИ-поиске: GEO-цитирование в ChatGPT и Perplexity, AEO-сниппеты и AI Overviews. Белые методы, связка с SEO. От 40 000 ₽/мес. Бесплатный аудит видимости в ИИ."
+    },
+    {
+      "kind": "element",
+      "code": "geo",
+      "section": "ai",
+      "name": "GEO-продвижение",
+      "html": "uslugi-prodvizhenie-ai-geo.html",
+      "meta_title": "GEO-продвижение — цитирование бренда в ChatGPT и Perplexity | Ай Ти Веб",
+      "meta_description": "GEO-продвижение под ключ: цитирование бренда в ChatGPT, Perplexity, Gemini и ЯндексGPT. Сущности, экспертный контент, мониторинг промптов. От 40 000 ₽/мес. Бесплатный аудит."
+    },
+    {
+      "kind": "element",
+      "code": "aeo",
+      "section": "ai",
+      "name": "AEO-продвижение",
+      "html": "uslugi-prodvizhenie-ai-aeo.html",
+      "meta_title": "AEO-продвижение — сниппеты и AI Overviews под ключ | Ай Ти Веб",
+      "meta_description": "AEO-продвижение под ключ: featured snippets, AI Overviews, FAQ-разметка, голосовые ответы. От 40 000 ₽/мес. Бесплатный аудит сниппетов."
     }
   ]
 }
