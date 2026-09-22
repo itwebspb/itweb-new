@@ -1,6 +1,13 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Услуги");
+$dmAiPath = (string)(parse_url($_SERVER["REQUEST_URI"] ?? "", PHP_URL_PATH) ?: "");
+if (preg_match('#^/services/prodvizhenie/ai/(geo|aeo)/?$#', $dmAiPath, $dmAiMatch)) {
+	LocalRedirect("/services/prodvizhenie-v-ai-poiske/".$dmAiMatch[1]."/", true, "301 Moved Permanently");
+}
+if (preg_match('#^/services/prodvizhenie/ai/?$#', $dmAiPath)) {
+	LocalRedirect("/services/prodvizhenie-v-ai-poiske/", true, "301 Moved Permanently");
+}
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news", 

@@ -14,6 +14,8 @@ SUPPORT_PAGES = (
     ("kontentnaya", "uslugi-podderzhka-kontentnaya.html"),
     ("dorabotka", "uslugi-podderzhka-dorabotka.html"),
     ("tekhnicheskaya", "uslugi-podderzhka-tekhnicheskaya.html"),
+    ("geo", "uslugi-prodvizhenie-ai-geo.html"),
+    ("aeo", "uslugi-prodvizhenie-ai-aeo.html"),
 )
 
 ICON_SPAN = re.compile(
@@ -80,14 +82,21 @@ class DmIconRestoreTest(unittest.TestCase):
         restored = php_restore(html, "lending", PAGES)
         self.assertEqual(restored, html)
 
-    def test_manifest_registers_all_three_support_elements(self):
+    def test_manifest_registers_icon_restore_elements(self):
         manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
         by_code = {page["code"]: page for page in manifest["pages"]}
+        expected_section = {
+            "kontentnaya": "podderzhka",
+            "dorabotka": "podderzhka",
+            "tekhnicheskaya": "podderzhka",
+            "geo": "prodvizhenie-v-ai-poiske",
+            "aeo": "prodvizhenie-v-ai-poiske",
+        }
         for code, filename in SUPPORT_PAGES:
             with self.subTest(code=code):
                 entry = by_code[code]
                 self.assertEqual(entry["kind"], "element")
-                self.assertEqual(entry["section"], "podderzhka")
+                self.assertEqual(entry["section"], expected_section[code])
                 self.assertEqual(entry["html"], filename)
 
 

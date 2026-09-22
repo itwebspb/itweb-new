@@ -3,6 +3,7 @@
 #
 # Usage:
 #   scripts/dm-sync-page.sh --env local|remote|both [--code CODE|--all] [--css]
+#   scripts/dm-sync-page.sh --env remote --retire-only --retire-codes prodvizhenie,ai
 #
 # Examples:
 #   scripts/dm-sync-page.sh --env local --all --css
@@ -34,6 +35,8 @@ ENV=""
 CODE=""
 DO_ALL=0
 DO_CSS=0
+RETIRE_CODES=""
+RETIRE_ONLY=0
 
 usage() {
   sed -n '1,20p' "$0" | sed 's/^# \{0,1\}//'
@@ -46,13 +49,19 @@ while [[ $# -gt 0 ]]; do
     --code) CODE="${2:-}"; shift 2 ;;
     --all) DO_ALL=1; shift ;;
     --css) DO_CSS=1; shift ;;
+    --retire-codes) RETIRE_CODES="${2:-}"; shift 2 ;;
+    --retire-only) RETIRE_ONLY=1; shift ;;
     -h|--help) usage ;;
     *) echo "Unknown arg: $1" >&2; usage ;;
   esac
 done
 
 [[ -n "$ENV" ]] || usage
-[[ "$DO_ALL" -eq 1 || -n "$CODE" ]] || { echo "Need --all or --code" >&2; exit 1; }
+if [[ "$RETIRE_ONLY" -eq 1 ]]; then
+  [[ -n "$RETIRE_CODES" ]] || { echo "Need --retire-codes with --retire-only" >&2; exit 1; }
+else
+  [[ "$DO_ALL" -eq 1 || -n "$CODE" ]] || { echo "Need --all or --code" >&2; exit 1; }
+fi
 [[ -f "$MANIFEST" && -f "$UPSERT_PHP" ]] || { echo "Missing manifest/upsert script" >&2; exit 1; }
 
 clear_cache() {
@@ -64,13 +73,15 @@ sync_files_local() {
   mkdir -p "$LOCAL_DOCROOT/bitrix/templates/aspro_max/design-model/pages"
   mkdir -p "$LOCAL_DOCROOT/bitrix/templates/aspro_max/design-model/images"
   mkdir -p "$LOCAL_DOCROOT/bitrix/templates/aspro_max/css"
-  if [[ "$DO_ALL" -eq 1 ]]; then
-    cp -f "$PAGES_SRC"/*.html "$LOCAL_DOCROOT/bitrix/templates/aspro_max/design-model/pages/"
-  else
-    local html
-    html="$(python3 -c "import json,sys; m=json.load(open(sys.argv[1])); c=sys.argv[2];
+  if [[ "$RETIRE_ONLY" -eq 0 ]]; then
+    if [[ "$DO_ALL" -eq 1 ]]; then
+      cp -f "$PAGES_SRC"/*.html "$LOCAL_DOCROOT/bitrix/templates/aspro_max/design-model/pages/"
+    else
+      local html
+      html="$(python3 -c "import json,sys; m=json.load(open(sys.argv[1])); c=sys.argv[2];
 print(next(p['html'] for p in m['pages'] if p['code']==c))" "$MANIFEST" "$CODE")"
-    cp -f "$PAGES_SRC/$html" "$LOCAL_DOCROOT/bitrix/templates/aspro_max/design-model/pages/"
+      cp -f "$PAGES_SRC/$html" "$LOCAL_DOCROOT/bitrix/templates/aspro_max/design-model/pages/"
+    fi
   fi
   if [[ -d "$IMAGES_SRC" ]]; then
     cp -a "$IMAGES_SRC/." "$LOCAL_DOCROOT/bitrix/templates/aspro_max/design-model/images/" 2>/dev/null || true
@@ -103,6 +114,8 @@ sync_db_local() {
     -e DM_MANIFEST=/var/www/bitrix/.dm-sync-tmp/dm-pages.manifest.json \
     -e DM_PAGES_DIR=/var/www/bitrix/bitrix/templates/aspro_max/design-model/pages \
     -e DM_CODE="${CODE}" \
+    -e DM_RETIRE_CODES="${RETIRE_CODES}" \
+    -e DM_RETIRE_ONLY="${RETIRE_ONLY}" \
     "$LOCAL_PHP_CONTAINER" \
     php /var/www/bitrix/.dm-sync-tmp/dm-sync-upsert.php
 
@@ -124,13 +137,15 @@ echo "RESORT_OK\n";
 
 sync_files_remote() {
   ssh -o BatchMode=yes "$REMOTE_SSH" "mkdir -p '$REMOTE_DOCROOT/bitrix/templates/aspro_max/design-model/pages' '$REMOTE_DOCROOT/bitrix/templates/aspro_max/design-model/images' '$REMOTE_DOCROOT/bitrix/templates/aspro_max/css' '$REMOTE_DOCROOT/.dm-sync-tmp'"
-  if [[ "$DO_ALL" -eq 1 ]]; then
-    scp -o BatchMode=yes "$PAGES_SRC"/*.html "$REMOTE_SSH:$REMOTE_DOCROOT/bitrix/templates/aspro_max/design-model/pages/"
-  else
-    local html
-    html="$(python3 -c "import json,sys; m=json.load(open(sys.argv[1])); c=sys.argv[2];
+  if [[ "$RETIRE_ONLY" -eq 0 ]]; then
+    if [[ "$DO_ALL" -eq 1 ]]; then
+      scp -o BatchMode=yes "$PAGES_SRC"/*.html "$REMOTE_SSH:$REMOTE_DOCROOT/bitrix/templates/aspro_max/design-model/pages/"
+    else
+      local html
+      html="$(python3 -c "import json,sys; m=json.load(open(sys.argv[1])); c=sys.argv[2];
 print(next(p['html'] for p in m['pages'] if p['code']==c))" "$MANIFEST" "$CODE")"
-    scp -o BatchMode=yes "$PAGES_SRC/$html" "$REMOTE_SSH:$REMOTE_DOCROOT/bitrix/templates/aspro_max/design-model/pages/"
+      scp -o BatchMode=yes "$PAGES_SRC/$html" "$REMOTE_SSH:$REMOTE_DOCROOT/bitrix/templates/aspro_max/design-model/pages/"
+    fi
   fi
   if [[ -d "$IMAGES_SRC" ]]; then
     scp -o BatchMode=yes -r "$IMAGES_SRC/." "$REMOTE_SSH:$REMOTE_DOCROOT/bitrix/templates/aspro_max/design-model/images/" 2>/dev/null || true
@@ -160,6 +175,8 @@ export DM_DOCROOT="\$ROOT"
 export DM_MANIFEST="\$ROOT/.dm-sync-tmp/dm-pages.manifest.json"
 export DM_PAGES_DIR="\$ROOT/bitrix/templates/aspro_max/design-model/pages"
 export DM_CODE='${CODE}'
+export DM_RETIRE_CODES='${RETIRE_CODES}'
+export DM_RETIRE_ONLY='${RETIRE_ONLY}'
 php "\$ROOT/.dm-sync-tmp/dm-sync-upsert.php"
 rm -rf "\$ROOT/bitrix/cache/"* "\$ROOT/bitrix/managed_cache/"* "\$ROOT/bitrix/stack_cache/"* 2>/dev/null || true
 rm -rf "\$ROOT/.dm-sync-tmp"

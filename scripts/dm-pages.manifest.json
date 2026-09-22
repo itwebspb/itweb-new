@@ -423,6 +423,33 @@
       "html": "uslugi-kontekst.html",
       "meta_title": "Контекстная реклама под ключ — Яндекс.Директ и Google Реклама | ITWEB",
       "meta_description": "Настройка и ведение контекстной рекламы под ключ: Яндекс.Директ, Google Реклама, РСЯ, ретаргетинг. Первые заявки за 7 дней, снижение стоимости лида на 30-40%. От 25 000 ₽. Бесплатный аудит кампаний."
+    },
+    {
+      "kind": "section",
+      "code": "prodvizhenie-v-ai-poiske",
+      "name": "Продвижение в ИИ-поиске",
+      "parent": null,
+      "html": "uslugi-prodvizhenie-v-ai-poiske.html",
+      "meta_title": "Продвижение в ИИ-поиске (GEO и AEO) — видимость бренда в нейросетях | Ай Ти Веб",
+      "meta_description": "Продвижение в ИИ-поиске под ключ: GEO (Generative Engine Optimization) и AEO (Answer Engine Optimization). Выводим бренд в ответы ChatGPT, Perplexity, Gemini, Алиса и поисковых сниппетов. От 35 000 ₽/мес. Аудит видимости в ИИ."
+    },
+    {
+      "kind": "element",
+      "code": "geo",
+      "section": "prodvizhenie-v-ai-poiske",
+      "name": "GEO-продвижение",
+      "html": "uslugi-prodvizhenie-ai-geo.html",
+      "meta_title": "GEO-продвижение в ИИ-поиске — Generative Engine Optimization | Ай Ти Веб",
+      "meta_description": "GEO-продвижение (Generative Engine Optimization) под ключ: выводим бренд в ответы ChatGPT, Perplexity, Gemini и Алисы. Entity-профиль, контент под извлечение ИИ, мониторинг цитируемости. От 35 000 ₽/мес. Аудит ИИ-видимости."
+    },
+    {
+      "kind": "element",
+      "code": "aeo",
+      "section": "prodvizhenie-v-ai-poiske",
+      "name": "AEO-продвижение",
+      "html": "uslugi-prodvizhenie-ai-aeo.html",
+      "meta_title": "AEO-продвижение сайтов — Answer Engine Optimization | Ай Ти Веб",
+      "meta_description": "AEO-продвижение сайтов под ключ: оптимизация под прямые ответы Яндекса и Google, голосовой поиск, сниппеты и FAQ. Точные ответы, Schema.org, контент под вопросы, мониторинг Position 0. От 30 000 ₽/мес."
     }
   ]
 }

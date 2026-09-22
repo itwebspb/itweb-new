@@ -142,6 +142,22 @@
 .dm-feature h3 { font-size: 17px; margin-bottom: 6px; }
 .dm-feature p { margin: 0; font-size: 14px; color: var(--dm-muted); line-height: 1.6; }
 
+/* Intro note: icon + heading + copy as one composition (not a lone grid card) */
+.dm-page .dm-feature--note {
+	margin: 0 0 44px;
+	padding: 28px 26px;
+	gap: 20px;
+	text-align: left;
+}
+.dm-page .dm-feature--note:hover { transform: none; box-shadow: var(--dm-shadow); }
+.dm-page .dm-feature--note > div { min-width: 0; flex: 1; }
+.dm-page .dm-feature--note h3 { font-size: 20px; margin-bottom: 10px; }
+.dm-page .dm-feature--note p { font-size: 16px; line-height: 1.7; }
+.dm-page .dm-feature--note p + p { margin-top: 12px; }
+@media (max-width: 479px) {
+	.dm-page .dm-feature--note { flex-direction: column; gap: 14px; }
+}
+
 /* ---- Case card (кейсы) ---- */
 /* Одинаковая высота красных шапок в ряду: карточки участвуют в 2 рядах родителя через subgrid */
 .dm-grid:has(> .dm-case) { align-items: stretch; }
@@ -591,6 +607,12 @@
 .dm-table strong { color: var(--dm-ink); }
 .dm-table-badge { display: inline-block; margin: 4px 0 0 5px; padding: 3px 8px; color: var(--dm-accent-dark);
 	background: var(--dm-accent-soft); border-radius: 999px; font-size: 11px; line-height: 1.4; font-weight: 700; white-space: nowrap; }
+.dm-table.dm-table--4 th:nth-child(1), .dm-table.dm-table--4 td:nth-child(1) { width: 18%; }
+.dm-table.dm-table--4 th:nth-child(2), .dm-table.dm-table--4 td:nth-child(2),
+.dm-table.dm-table--4 th:nth-child(3), .dm-table.dm-table--4 td:nth-child(3),
+.dm-table.dm-table--4 th:nth-child(4), .dm-table.dm-table--4 td:nth-child(4) { width: 27.3%; }
+.dm-page .dm-hero a { color: #fff; font-weight: 700; text-decoration: underline; }
+.dm-page .dm-hero .dm-subtitle + .dm-subtitle { margin-top: -32px; }
 
 /* ---- Visitka: deliverables — список результатов после запуска ---- */
 .dm-deliverable { display: flex; gap: 18px; align-items: flex-start; padding: 24px 22px; background: #fff;
